@@ -95,33 +95,44 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
         return  builder.build();
     }
 
-      /*  return HttpRequest.newBuilder()
-                .GET()
-                .uri(URI.create(getService()+"/"+getEndpoint() + (params != null && !params.isEmpty() ? "/"+params : "")))
-                .setHeader(HEADER_ACCEPT, HEADER_DRUPAL_JSONAPI)
-                .setHeader(HEADER_CONTENT_TYPE, HEADER_DRUPAL_JSONAPI)
-                .build();*/
-
     /**
      * Metodo per la creazione di una richiesta http POST
      * @return
      */
     private HttpRequest createPostHttpRequest() {
         HttpRequest.Builder builder = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(taxonomyRequest.toJsonBodyInsert()));
-        setServiceUri(builder, null);
+        setServiceUri(builder, taxonomyRequest.getUUID());
         setStandardHeader(builder);
         setAuth(builder);
         return builder.build();
     }
-     /*   return HttpRequest.newBuilder()
-                .POST(HttpRequest.BodyPublishers.ofString(taxonomyRequest.toJsonBodyInsert()))
-                .uri(URI.create(getService() + "/" + getEndpoint()))
-                .setHeader(HEADER_ACCEPT, HEADER_DRUPAL_JSONAPI)
-                .setHeader(HEADER_CONTENT_TYPE, HEADER_DRUPAL_JSONAPI)
-                .setHeader(HEADER_AUTH,  getAuth())
-                .build();
 
-*/
+    /**
+     * Metodo per la creazione di una richiesta http DELETE
+     * @return
+     */
+    private HttpRequest createDelHttpRequest() {
+        HttpRequest.Builder builder = HttpRequest.newBuilder().DELETE();
+        setServiceUri(builder, taxonomyRequest.getUUID());
+        setStandardHeader(builder);
+        setAuth(builder);
+        return builder.build();
+    }
+
+
+    /**
+     * Metodo per la creazione di una richiesta http PATCH
+     * @return
+     */
+    private HttpRequest createPatchHttpRequest() {
+        HttpRequest.Builder builder = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(taxonomyRequest.toJsonBodyInsert()));
+        setServiceUri(builder, taxonomyRequest.getUUID());
+        setStandardHeader(builder);
+        builder.setHeader(HEADER_METHOD_OVER,HEADER_PATCH);
+        setAuth(builder);
+        return builder.build();
+    }
+
     /**
      * Metodo per aggiungere il contennuto necessario all'autorizzazionee nell header
      *
