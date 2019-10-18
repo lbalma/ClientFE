@@ -1,12 +1,11 @@
 package it.almaviva.cgsse.drupal.taxonomy.client;
 
-import it.almaviva.cgsse.drupal.bean.ATaxonomyRequest;
-import it.almaviva.cgsse.drupal.bean.TaxonomyAziendaBean;
 import it.almaviva.cgsse.drupal.exception.NotValideRequestException;
+import it.almaviva.cgsse.drupal.taxonomy.bean.TaxonomyAziendaRequestBean;
 
-public class TaxonomyAziendaClient extends ATaxonomyClient<TaxonomyAziendaBean> {
+public class TaxonomyAziendaClient extends ATaxonomyClient<TaxonomyAziendaRequestBean> {
 
-    public TaxonomyAziendaClient(TaxonomyAziendaBean taxonomyRequest){
+    public TaxonomyAziendaClient(TaxonomyAziendaRequestBean taxonomyRequest){
         this.taxonomyRequest = taxonomyRequest;
     }
 

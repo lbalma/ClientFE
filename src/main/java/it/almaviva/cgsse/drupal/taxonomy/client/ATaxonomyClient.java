@@ -1,6 +1,6 @@
 package it.almaviva.cgsse.drupal.taxonomy.client;
 
-import it.almaviva.cgsse.drupal.bean.ATaxonomyRequest;
+import it.almaviva.cgsse.drupal.taxonomy.bean.ATaxonomy;
 import it.almaviva.cgsse.drupal.exception.NotValideRequestException;
 import it.almaviva.cgsse.drupal.utils.ClientCostant;
 
@@ -13,7 +13,7 @@ import java.util.Base64;
 /**
  * Classe astratta per interfaccia con i servizi drupal di tassonomia
  */
-public abstract class ATaxonomyClient<R extends ATaxonomyRequest> extends ClientCostant {
+public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant {
 
     protected R taxonomyRequest;
 
