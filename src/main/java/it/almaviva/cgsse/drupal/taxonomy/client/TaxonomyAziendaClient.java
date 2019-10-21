@@ -17,6 +17,7 @@ import static it.almaviva.cgsse.drupal.exception.NotValideRequestException.*;
 
 public class TaxonomyAziendaClient extends ATaxonomyClient<TaxonomyAziendaRequestBean> {
 
+    //All Kind ruturn
     private TaxonomyAziendaResponseBeanList resListJsonapiObject;
     private TaxonomyAziendaResponseBean resJsonapiObject;
     private List<TaxonomyAziendaBOBean> resBOList;

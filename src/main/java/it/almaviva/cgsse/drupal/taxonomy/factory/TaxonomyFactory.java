@@ -10,8 +10,17 @@ import it.almaviva.cgsse.drupal.taxonomy.bean.TaxonomyAziendaResponseBeanList;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Factory delle tassonomie
+ */
 public class TaxonomyFactory {
 
+    /**
+     * Crea da una stringa json un oggetto contenente tutti gli attributi
+     *
+     * @param jsonString
+     * @return
+     */
     public static TaxonomyAziendaResponseBean createAziendaResponse_jsonapiFormat(String jsonString){
         Gson g = new Gson();
         TaxonomyAziendaResponseBean obj = g.fromJson(jsonString, TaxonomyAziendaResponseBean.class);
@@ -19,16 +28,28 @@ public class TaxonomyFactory {
         return obj;
     }
 
+    /**
+     * Crea da una stringa json un oggetto da passare al BO, con attributi filtrati
+     *
+     * @param jsonString
+     * @return
+     */
     public static TaxonomyAziendaBOBean createAziendaResponse_boFormat(String jsonString){
         Gson g = new Gson();
         TaxonomyAziendaResponseBean obj = g.fromJson(jsonString, TaxonomyAziendaResponseBean.class);
         TaxonomyAziendaBOBean boBean = new TaxonomyAziendaBOBean();
         boBean.setName(((TaxonomyAziendaResponseAttributes)obj.getdata().getAttributes()).getName());
         boBean.setUuid(obj.getdata().getId());
+
         return boBean;
     }
 
-
+    /**
+     * Crea da una stringa json un oggetto contenente tutti gli attributi
+     *
+     * @param jsonString
+     * @return
+     */
     public static TaxonomyAziendaResponseBeanList createAziendaResponse_jsonapiFormatList(String jsonString){
         Gson g = new Gson();
         TaxonomyAziendaResponseBeanList obj = g.fromJson(jsonString, TaxonomyAziendaResponseBeanList.class);
@@ -36,6 +57,12 @@ public class TaxonomyFactory {
         return obj;
     }
 
+    /**
+     * Crea da una stringa json un oggetto da passare al BO, con attributi filtrati
+     *
+     * @param jsonString
+     * @return
+     */
     public static List<TaxonomyAziendaBOBean> createAziendaResponse_boFormatList(String jsonString){
         Gson g = new Gson();
         TaxonomyAziendaResponseBeanList obj = g.fromJson(jsonString, TaxonomyAziendaResponseBeanList.class);

@@ -1,7 +1,7 @@
 package it.almaviva.cgsse.drupal.taxonomy.bean;
 import static it.almaviva.cgsse.drupal.taxonomy.Costants.TAXONOMY_AZIENDA;
 /**
- *
+ * Classe per effettuare richieste hai servizzi esposti del FE per la tassonomia Azienda
  */
 public class TaxonomyAziendaRequestBean extends ATaxonomy{
 

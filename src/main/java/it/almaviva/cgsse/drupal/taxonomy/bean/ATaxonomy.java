@@ -1,5 +1,8 @@
 package it.almaviva.cgsse.drupal.taxonomy.bean;
 
+/**
+ * Classe asratta contenente i metodi generici per una semplice comunicazione con FE
+ */
 public abstract class ATaxonomy {
 
     /**

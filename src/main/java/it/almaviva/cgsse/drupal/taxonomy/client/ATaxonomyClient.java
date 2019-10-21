@@ -18,7 +18,7 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
     protected R taxonomyRequest;
     private int status;
 
-    //Client
+    //Client unico
     private static final HttpClient httpClient = HttpClient.newBuilder()
             .version(HttpClient.Version.HTTP_2)
             .build();
@@ -26,14 +26,15 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
     /**
      * Metodo che ritorna la lista di del contenuto della tassonomia
      *
-     * @return
      * @throws Exception
      */
     public void getAll() throws Exception{
-
+        //INIT
         HttpRequest request =  createGetHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        //CHECK
         checkError(response);
+        //RESULT
         setResult(response, true);
 
     }
@@ -41,14 +42,15 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
     /**
      * Metodo che torna un elemento specifico della tassonomia
      *
-     * @return
      * @throws Exception
      */
     public void get() throws Exception{
-
+        //INIT
         HttpRequest request = createGetHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        //CHECK
         checkError(response);
+        //RESULT
         setResult(response, false);
 
     }
@@ -58,15 +60,17 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
     /**
      * Metodo che inserisce un elemento nella tassonomia
      *
-     * @return
      * @throws Exception
      */
     public void post() throws Exception{
-
+        //VALIDATE
         validateTaxonomyRequest();
+        //INIT
         HttpRequest request = createPostHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        //CHECK
         checkError(response);
+        //RESULT
         setResult(response, false);
 
     }
@@ -74,31 +78,35 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
     /**
      * Metodo che elimina un elemento nella tassonomia
      *
-     * @return
      * @throws Exception
      */
     public boolean del() throws Exception{
+        //VALIDATE
         validateUUIDRequest();
+        //INIT
         HttpRequest request = createDelHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        //CHECK
         checkError(response);
-
+        //RESULT
         return true;
     }
 
     /**
      * Metodo che aggiorna un elemento nella tassonomia
      *
-     * @return
      * @throws Exception
      */
     public void patch() throws Exception{
+        //VALIDATE
         validateUUIDRequest();
+        //INIT
         HttpRequest request = createPatchHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        //CHECK
         checkError(response);
+        //RESULT
         setResult(response, false);
-
     }
 
     /**
@@ -233,11 +241,19 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
      */
     protected abstract void setResult(HttpResponse<String> response, boolean isList);
 
+    /**
+     * Metodo per toranre lo satatus della richiesta effettuata
+     * @return
+     */
     public int getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    /**
+     * Metodo privato per il settaggio dello status chiamata
+     * @param status
+     */
+    private void setStatus(int status) {
         this.status = status;
     }
 }
