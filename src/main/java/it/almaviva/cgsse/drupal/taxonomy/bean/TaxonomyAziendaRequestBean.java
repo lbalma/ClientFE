@@ -1,5 +1,5 @@
 package it.almaviva.cgsse.drupal.taxonomy.bean;
-
+import static it.almaviva.cgsse.drupal.taxonomy.Costants.TAXONOMY_AZIENDA;
 /**
  *
  */
@@ -32,7 +32,7 @@ public class TaxonomyAziendaRequestBean extends ATaxonomy{
 
     @Override
     protected String getTipo() {
-        return "azienda";
+        return TAXONOMY_AZIENDA;
     }
 
     public void setUUID(String uuid) {
