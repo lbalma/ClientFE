@@ -1,5 +1,8 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura MetaObject
+ */
 public class MetaObject {
 
     private String about;
@@ -24,9 +27,11 @@ public class MetaObject {
 
     @Override
     public String toString() {
-        return "MetaObject{" +
-                "about='" + about + '\'' +
-                ", links=" + links +
-                '}';
+        StringBuilder s = new StringBuilder(MetaObject.class.getName())
+            .append("{" )
+                .append("about='" ).append(about ).append('\'' )
+                .append(", links=" ).append(links )
+                .append('}');
+        return s.toString();
     }
 }

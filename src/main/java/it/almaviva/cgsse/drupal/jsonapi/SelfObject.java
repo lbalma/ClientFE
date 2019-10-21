@@ -1,5 +1,8 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura SelfObject
+ */
 public class SelfObject {
 
     private String href;
@@ -15,8 +18,10 @@ public class SelfObject {
 
     @Override
     public String toString() {
-        return "SelfObject{" +
-                "href='" + href + '\'' +
-                '}';
+        StringBuilder s = new StringBuilder(SelfObject.class.getName())
+                .append("{" )
+                .append("href='").append( href ).append('\'' )
+                .append('}');
+        return s.toString();
     }
 }

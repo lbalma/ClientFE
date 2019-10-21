@@ -1,5 +1,8 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura RevisionUserObject
+ */
 public class RevisionUserObject {
 
     private DataObject data;
@@ -24,9 +27,11 @@ public class RevisionUserObject {
 
     @Override
     public String toString() {
-        return "RrevisionUserObject{" +
-                "data=" + data +
-                ", links=" + links +
-                '}';
+        StringBuilder s = new StringBuilder(RevisionUserObject.class.getName())
+                .append("{" )
+                .append("data=" ).append(data )
+                .append(", links=" ).append(links )
+                .append('}');
+        return s.toString();
     }
 }

@@ -2,6 +2,9 @@ package it.almaviva.cgsse.drupal.jsonapi;
 
 import java.util.List;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura ParentObject
+ */
 public class ParentObject {
 
     private List<DataObject> data;
@@ -26,9 +29,11 @@ public class ParentObject {
 
     @Override
     public String toString() {
-        return "ParentObject{" +
-                "data=" + data +
-                ", links=" + links +
-                '}';
+        StringBuilder s = new StringBuilder(ParentObject.class.getName())
+             .append("{" )
+                .append("data=" ).append(data )
+                .append(", links=" ).append(links )
+                .append('}');
+        return s.toString();
     }
 }

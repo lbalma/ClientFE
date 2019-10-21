@@ -1,5 +1,8 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura ReletedObject
+ */
 public class ReletedObject {
 
     private String href;
@@ -15,8 +18,10 @@ public class ReletedObject {
 
     @Override
     public String toString() {
-        return "ReletedObject{" +
-                "href='" + href + '\'' +
-                '}';
+        StringBuilder s = new StringBuilder(ReletedObject.class.getName())
+                .append("{" )
+                .append("href='" ).append( href ).append( '\'' )
+                .append('}');
+        return s.toString();
     }
 }

@@ -1,5 +1,8 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura HelpObject
+ */
 public class HelpObject {
 
     private String href;
@@ -23,9 +26,11 @@ public class HelpObject {
 
     @Override
     public String toString() {
-        return "HelpObject{" +
-                "href='" + href + '\'' +
-                ", meta=" + meta +
-                '}';
+        StringBuilder s = new StringBuilder(HelpObject.class.getName())
+                .append( "{" )
+                .append("href='" ).append( href ).append( '\'' )
+                .append(", meta=" ).append( meta )
+                .append('}');
+        return s.toString();
     }
 }

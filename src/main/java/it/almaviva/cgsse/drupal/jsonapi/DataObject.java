@@ -1,5 +1,8 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura DataObject, gestione con Genercis per scalabilità su più taxonomy
+ */
 public class DataObject <R extends AttributesObject>{
 
     private String type;
@@ -60,14 +63,16 @@ public class DataObject <R extends AttributesObject>{
 
     @Override
     public String toString() {
-        return "DataObject{" +
-                "type='" + type + '\'' +
-                ", id='" + id + '\'' +
-                ", relationships=" + relationships +
-                ", attributes=" + attributes +
-                ", links=" + links +
-                ", meta=" + meta +
-                '}';
+        StringBuilder s = new StringBuilder(DataObject.class.getName())
+                .append("{" )
+                .append("type='" ).append( type ).append( '\'' )
+                .append(", id='" ).append( id ).append( '\'' )
+                .append(", relationships=" ).append( relationships )
+                .append(", attributes=" ).append( attributes )
+                .append(", links=" ).append( links )
+                .append(", meta=" ).append( meta )
+                .append('}');
+        return s.toString();
     }
 
 }

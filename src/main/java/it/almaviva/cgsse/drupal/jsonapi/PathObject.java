@@ -1,5 +1,8 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura PathObject
+ */
 public class PathObject {
 
      private String alias;
@@ -32,10 +35,12 @@ public class PathObject {
 
      @Override
      public String toString() {
-          return "PathObject{" +
-                  "alias='" + alias + '\'' +
-                  ", pid='" + pid + '\'' +
-                  ", langcode='" + langcode + '\'' +
-                  '}';
+          StringBuilder s = new StringBuilder(PathObject.class.getName())
+               .append("{" )
+                  .append("alias='" ).append(alias ).append('\'' )
+                  .append(", pid='" ).append( pid ).append( '\'' )
+                  .append(", langcode='" ).append( langcode ).append( '\'' )
+                  .append('}');
+          return s.toString();
      }
 }

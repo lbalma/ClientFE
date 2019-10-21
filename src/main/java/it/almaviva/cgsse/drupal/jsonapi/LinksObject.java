@@ -1,5 +1,8 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura LinksObject
+ */
 public class LinksObject {
 
     private SelfObject self;
@@ -33,10 +36,12 @@ public class LinksObject {
 
     @Override
     public String toString() {
-        return "LinksObject{" +
-                "self=" + self +
-                ", related=" + related +
-                ", help=" + help +
-                '}';
+        StringBuilder s = new StringBuilder(LinksObject.class.getName())
+            .append("{" )
+                .append("self=" ).append(self )
+                .append(", related=" ).append(related )
+                .append(", help=").append(help )
+                .append('}');
+        return s.toString();
     }
 }

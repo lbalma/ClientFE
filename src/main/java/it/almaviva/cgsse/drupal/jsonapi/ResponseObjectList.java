@@ -2,6 +2,9 @@ package it.almaviva.cgsse.drupal.jsonapi;
 
 import java.util.List;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura ResponseObject, gestione con generics per scalabilità su taxonomy
+ */
 public class ResponseObjectList<R extends  AttributesObject> {
 
     private JsonapiObject jsonapi;
@@ -35,10 +38,12 @@ public class ResponseObjectList<R extends  AttributesObject> {
 
     @Override
     public String toString() {
-        return "ResponseObjectList{" +
-                "jsonapi=" + jsonapi +
-                ", data=" + data +
-                ", links=" + links +
-                '}';
+        StringBuilder s = new StringBuilder(ResponseObjectList.class.getName())
+                .append("{" )
+                .append("jsonapi=" ).append(jsonapi )
+                .append(", data=" ).append(data)
+                .append(", links=" ).append(links )
+                .append('}');
+        return s.toString();
     }
 }
