@@ -1,5 +1,8 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura Attributes
+ */
 public class AttributesObject {
 
     private String drupal_internal__tid;
@@ -115,19 +118,21 @@ public class AttributesObject {
 
     @Override
     public String toString() {
-        return "AttributesObject{" +
-                "drupal_internal__tid='" + drupal_internal__tid + '\'' +
-                ", drupal_internal__revision_id='" + drupal_internal__revision_id + '\'' +
-                ", langcode='" + langcode + '\'' +
-                ", revision_created='" + revision_created + '\'' +
-                ", revision_log_message='" + revision_log_message + '\'' +
-                ", status=" + status +
-                ", description='" + description + '\'' +
-                ", weight=" + weight +
-                ", changed='" + changed + '\'' +
-                ", default_langcode=" + default_langcode +
-                ", revision_translation_affected=" + revision_translation_affected +
-                ", path=" + path +
-                '}';
+        StringBuilder s = new StringBuilder(AttributesObject.class.getName())
+                .append("{")
+                .append("drupal_internal__tid='").append(  drupal_internal__tid ).append( '\'' )
+                .append(", drupal_internal__revision_id='").append(  drupal_internal__revision_id ).append( '\'' )
+                .append(", langcode='").append(  langcode ).append('\'' )
+                .append(", revision_created='").append(  revision_created ).append( '\'' )
+                .append(", revision_log_message='").append(  revision_log_message ).append( '\'' )
+                .append(", status=").append( status )
+                .append(", description='").append(  description ).append('\'' )
+                .append(", weight=").append( weight )
+                .append(", changed='").append( changed ).append( '\'' )
+                .append(", default_langcode=").append( default_langcode )
+                .append(", revision_translation_affected=").append(  revision_translation_affected )
+                .append(", path=").append( path )
+                .append('}');
+        return s.toString();
     }
 }

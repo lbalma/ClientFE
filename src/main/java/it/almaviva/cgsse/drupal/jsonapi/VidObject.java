@@ -1,5 +1,8 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura VidObject
+ */
 public class VidObject {
 
     private DataObject data;
@@ -23,9 +26,11 @@ public class VidObject {
 
     @Override
     public String toString() {
-        return "VidObject{" +
-                "data=" + data +
-                ", links=" + links +
-                '}';
+        StringBuilder s = new StringBuilder(VidObject.class.getName())
+                .append( "{" )
+                .append("data=" ).append(data )
+                .append(", links=" ).append(links )
+                .append('}');
+        return s.toString();
     }
 }

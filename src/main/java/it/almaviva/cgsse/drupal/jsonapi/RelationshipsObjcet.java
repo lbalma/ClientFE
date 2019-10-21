@@ -1,5 +1,8 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura RelationshipsObjcet
+ */
 public class RelationshipsObjcet {
 
     private VidObject vid;
@@ -33,10 +36,12 @@ public class RelationshipsObjcet {
 
     @Override
     public String toString() {
-        return "RelationshipsObjcet{" +
-                "vid=" + vid +
-                ", revision_user=" + revision_user +
-                ", parent=" + parent +
-                '}';
+        StringBuilder s = new StringBuilder(RelationshipsObjcet.class.getName())
+                .append("{" )
+                .append("vid=" ).append( vid )
+                .append(", revision_user=") .append( revision_user )
+                .append(", parent=") .append( parent )
+                .append('}');
+        return s.toString();
     }
 }

@@ -1,5 +1,8 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura JsonapiObject
+ */
 public class JsonapiObject {
 
     private String version;
@@ -23,9 +26,11 @@ public class JsonapiObject {
 
     @Override
     public String toString() {
-        return "JsonapiObject{" +
-                "version='" + version + '\'' +
-                ", meta=" + meta +
-                '}';
+        StringBuilder s = new StringBuilder(JsonapiObject.class.getName())
+                .append("{")
+                .append("version='").append(version ).append('\'')
+                .append(", meta=").append(meta)
+                .append('}');
+        return s.toString();
     }
 }

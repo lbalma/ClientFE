@@ -1,5 +1,8 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
+/**
+ * Classe per conversione jsonapi to object, della struttura ResponseObject, gestione con generics per scalabilità su taxonomy
+ */
 public class ResponseObject<R extends  AttributesObject> {
 
     private JsonapiObject jsonapi;
@@ -33,10 +36,12 @@ public class ResponseObject<R extends  AttributesObject> {
 
     @Override
     public String toString() {
-        return "ResponseObject{" +
-                "jsonapi=" + jsonapi +
-                ", data=" + data +
-                ", links=" + links +
-                '}';
+        StringBuilder s = new StringBuilder(ResponseObject.class.getName())
+                .append("{" )
+                .append("jsonapi="  ).append(jsonapi )
+                .append(", data="  ).append(data )
+                .append(", links="  ).append(links )
+                .append('}');
+        return s.toString();
     }
 }
