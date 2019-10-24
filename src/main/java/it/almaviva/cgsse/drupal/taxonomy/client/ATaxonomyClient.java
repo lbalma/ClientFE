@@ -1,27 +1,23 @@
 package it.almaviva.cgsse.drupal.taxonomy.client;
 
+import it.almaviva.cgsse.drupal.common.client.ClientCommon;
 import it.almaviva.cgsse.drupal.taxonomy.bean.ATaxonomy;
 import it.almaviva.cgsse.drupal.exception.NotValideRequestException;
-import it.almaviva.cgsse.drupal.utils.ClientCostant;
+import it.almaviva.cgsse.utils.PropertiesManager;
 
+import java.io.IOException;
 import java.net.URI;
-import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Base64;
 
 /**
  * Classe astratta per interfaccia con i servizi drupal di tassonomia
  */
-public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant {
+public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCommon {
 
     protected R taxonomyRequest;
     private int status;
 
-    //Client unico
-    private static final HttpClient httpClient = HttpClient.newBuilder()
-            .version(HttpClient.Version.HTTP_2)
-            .build();
 
     /**
      * Metodo che ritorna la lista di del contenuto della tassonomia
@@ -33,7 +29,7 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
         HttpRequest request =  createGetHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         //CHECK
-        checkError(response);
+        checkHTTPResponceCod(response);
         //RESULT
         setResult(response, true);
 
@@ -49,12 +45,27 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
         HttpRequest request = createGetHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         //CHECK
-        checkError(response);
+        checkHTTPResponceCod(response);
         //RESULT
         setResult(response, false);
 
     }
 
+    /**
+     * Metodo che torna un elemento specifico della tassonomia
+     *
+     * @throws Exception
+     */
+    public void getByFk() throws Exception{
+        //INIT
+        HttpRequest request = createGetByFkHttpRequest();
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        //CHECK
+        checkHTTPResponceCod(response);
+        //RESULT
+        setResult(response, true);
+
+    }
 
 
     /**
@@ -69,7 +80,7 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
         HttpRequest request = createPostHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         //CHECK
-        checkError(response);
+        checkHTTPResponceCod(response);
         //RESULT
         setResult(response, false);
 
@@ -87,7 +98,7 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
         HttpRequest request = createDelHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         //CHECK
-        checkError(response);
+        checkHTTPResponceCod(response);
         //RESULT
         return true;
     }
@@ -104,7 +115,7 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
         HttpRequest request = createPatchHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         //CHECK
-        checkError(response);
+        checkHTTPResponceCod(response);
         //RESULT
         setResult(response, false);
     }
@@ -114,15 +125,28 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
      *
      * @return
      */
-    private String getService(){
-        return "http://localhost:80/protocgsse/jsonapi/taxonomy_term"; //TODO Inserire in file di properties
+    private String getService() throws IOException {
+        String FE_PROTOCOL = PropertiesManager.getInstance().getValue(PropertiesManager.FE_PROTOCOL);
+        String FE_IP = PropertiesManager.getInstance().getValue(PropertiesManager.FE_IP);
+        String FE_PORT = PropertiesManager.getInstance().getValue(PropertiesManager.FE_PORT);
+        String FE_DOMAIN = PropertiesManager.getInstance().getValue(PropertiesManager.FE_DOMAIN);
+        String FE_TAXONOMY_SERVICE = PropertiesManager.getInstance().getValue(PropertiesManager.FE_TAXONOMY_SERVICE);
+
+        StringBuilder s = new StringBuilder();
+        s.append(FE_PROTOCOL).append("://");
+        s.append(FE_IP).append(":");
+        s.append(FE_PORT).append("/");
+        s.append(FE_DOMAIN).append("/");
+        s.append(FE_TAXONOMY_SERVICE);
+
+        return s.toString();
     }
 
     /**
      * Metodo per la creazione di una richiesta http GET
      * @return
      */
-    private HttpRequest createGetHttpRequest(){
+    private HttpRequest createGetHttpRequest() throws IOException {
         HttpRequest.Builder builder = HttpRequest.newBuilder().GET();
         setServiceUri(builder, taxonomyRequest.getUUID());
         setStandardHeader(builder);
@@ -133,7 +157,7 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
      * Metodo per la creazione di una richiesta http POST
      * @return
      */
-    private HttpRequest createPostHttpRequest() {
+    private HttpRequest createPostHttpRequest() throws IOException {
         HttpRequest.Builder builder = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(taxonomyRequest.toJsonBodyInsert()));
         setServiceUri(builder, taxonomyRequest.getUUID());
         setStandardHeader(builder);
@@ -145,7 +169,7 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
      * Metodo per la creazione di una richiesta http DELETE
      * @return
      */
-    private HttpRequest createDelHttpRequest() {
+    private HttpRequest createDelHttpRequest() throws IOException {
         HttpRequest.Builder builder = HttpRequest.newBuilder().DELETE();
         setServiceUri(builder, taxonomyRequest.getUUID());
         setStandardHeader(builder);
@@ -153,12 +177,21 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
         return builder.build();
     }
 
-
+    /**
+     * Metodo per la creazione di una richiesta http GET
+     * @return
+     */
+    private HttpRequest createGetByFkHttpRequest() throws IOException {
+        HttpRequest.Builder builder = HttpRequest.newBuilder().GET();
+        setServiceUriFilterFk(builder, taxonomyRequest.getFk());
+        setStandardHeader(builder);
+        return  builder.build();
+    }
     /**
      * Metodo per la creazione di una richiesta http PATCH
      * @return
      */
-    private HttpRequest createPatchHttpRequest() {
+    private HttpRequest createPatchHttpRequest() throws IOException {
         HttpRequest.Builder builder = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(taxonomyRequest.toJsonBodyUpdate()));
         setServiceUri(builder, taxonomyRequest.getUUID());
         setStandardHeader(builder);
@@ -167,34 +200,6 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
         return builder.build();
     }
 
-    /**
-     * Metodo per aggiungere il contennuto necessario all'autorizzazionee nell header
-     *
-     * @return
-     */
-    private String getAuth(){//TODO Gestire con file di properties e criptazione della password
-        String encoding = Base64.getEncoder().encodeToString(("admin:admin").getBytes());
-        return "Basic "+encoding;
-    }
-
-    /**
-     * Metodo per aggiungere il tipi contunuto a accettati nell header per a comunicazione con le jsonapi di drupal
-     *
-     * @param builder
-     */
-    private void setStandardHeader(HttpRequest.Builder builder){
-        builder.setHeader(HEADER_ACCEPT, HEADER_DRUPAL_JSONAPI);
-        builder.setHeader(HEADER_CONTENT_TYPE, HEADER_DRUPAL_JSONAPI);
-    }
-
-    /**
-     * Metodo per aggiugnere nell header la simple auth
-     *
-     * @param builder
-     */
-    private void setAuth(HttpRequest.Builder builder){
-        builder.setHeader(HEADER_AUTH,  getAuth());
-    }
 
     /**
      * Metodo per la configurazione del servizio e relativo enpoit di destinazione del client
@@ -202,13 +207,24 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCostant
      * @param builder
      * @param params
      */
-    private void setServiceUri(HttpRequest.Builder builder, String params){
+    private void setServiceUri(HttpRequest.Builder builder, String params) throws IOException {
         builder.uri(URI.create(getService()+"/"+getEndpoint() + (params != null && !params.isEmpty() ? "/"+params : "")));
     }
 
-    protected void checkError(HttpResponse<String> response) throws Exception{
+    /**
+     * Metodo per la configurazione del servizio e relativo enpoit di destinazione del client
+     *
+     * @param builder
+     */
+    private void setServiceUriFilterFk(HttpRequest.Builder builder, String fk) throws IOException {
+        String url = getService()+"/"+getEndpoint() + "?filter["+getEndpoint()+"-fk][path]=field_fk&filter["+getEndpoint()+"-fk][value]="+fk;
+        System.out.println(url);
+        builder.uri(URI.create(url));
+    }
+
+    protected void checkHTTPResponceCod(HttpResponse<String> response) throws Exception{
         if(true){
-            System.out.println("checkError:"+ response.statusCode());
+            System.out.println("checkHTTPResponceCod:"+ response.statusCode());
         }
         setStatus(response.statusCode());
         if(response.statusCode() <200 || response.statusCode() >= 300){

@@ -1,17 +1,21 @@
-package it.almaviva.cgsse.drupal.taxonomy.bean;
+package it.almaviva.cgsse.drupal.taxonomy.bean.settore;
+import it.almaviva.cgsse.drupal.taxonomy.bean.ATaxonomy;
+
 import static it.almaviva.cgsse.drupal.taxonomy.Costants.TAXONOMY_AZIENDA;
+
 /**
  * Classe per effettuare richieste hai servizzi esposti del FE per la tassonomia Azienda
  */
-public class TaxonomyAziendaRequestBean extends ATaxonomy{
+public class TaxonomySettoreRequestBean extends ATaxonomy {
 
     private String name;
     private String uuid;
+    private String fk;
 
-    public TaxonomyAziendaRequestBean() {
+    public TaxonomySettoreRequestBean() {
     }
 
-    public TaxonomyAziendaRequestBean(String name) {
+    public TaxonomySettoreRequestBean(String name) {
         this.name = name;
     }
 
@@ -26,7 +30,8 @@ public class TaxonomyAziendaRequestBean extends ATaxonomy{
     @Override
     protected String attributeToJson() {
         StringBuilder sb = new StringBuilder();
-        sb.append("\"name\":\"").append(getName()).append("\"");
+        sb.append("\"name\":\"").append(getName()).append("\",");
+        sb.append("\"field_fk\":\"").append(getFk()).append("\"");
         return sb.toString();
     }
 
@@ -42,5 +47,14 @@ public class TaxonomyAziendaRequestBean extends ATaxonomy{
     @Override
     public String getUUID() {
         return uuid;
+    }
+
+    @Override
+    public String getFk() {
+        return fk;
+    }
+
+    public void setFk(String fk) {
+        this.fk = fk;
     }
 }

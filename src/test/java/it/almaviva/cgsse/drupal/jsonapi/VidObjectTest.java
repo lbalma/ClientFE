@@ -29,7 +29,7 @@ public class VidObjectTest {
                 "                }\n" +
                 "            }";
         Gson g = new Gson();
-        VidObject obj = g.fromJson(jsonString,VidObject.class);
+        DataAndLinksObject obj = g.fromJson(jsonString,DataAndLinksObject.class);
 
         //PRINT
         System.out.println(jsonString);

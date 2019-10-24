@@ -1,12 +1,12 @@
 package it.almaviva.cgsse.drupal.taxonomy.client;
 
-import it.almaviva.cgsse.bo.bean.TaxonomyAziendaBOBean;
+import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomyAziendaBOBean;
 import it.almaviva.cgsse.drupal.exception.NotValideRequestException;
 import it.almaviva.cgsse.drupal.jsonapi.DataObject;
-import it.almaviva.cgsse.drupal.taxonomy.bean.TaxonomyAziendaRequestBean;
-import it.almaviva.cgsse.drupal.taxonomy.bean.TaxonomyAziendaResponseAttributes;
-import it.almaviva.cgsse.drupal.taxonomy.bean.TaxonomyAziendaResponseBean;
-import it.almaviva.cgsse.drupal.taxonomy.bean.TaxonomyAziendaResponseBeanList;
+import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaRequestBean;
+import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaResponseAttributes;
+import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaResponseBean;
+import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaResponseBeanList;
 import it.almaviva.cgsse.drupal.taxonomy.factory.TaxonomyFactory;
 
 import java.net.http.HttpResponse;

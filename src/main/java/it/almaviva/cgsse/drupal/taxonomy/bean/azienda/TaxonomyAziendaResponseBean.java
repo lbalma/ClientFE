@@ -1,4 +1,4 @@
-package it.almaviva.cgsse.drupal.taxonomy.bean;
+package it.almaviva.cgsse.drupal.taxonomy.bean.azienda;
 
 import it.almaviva.cgsse.drupal.jsonapi.ResponseObject;
 

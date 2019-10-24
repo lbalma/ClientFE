@@ -1,8 +1,8 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
 import com.google.gson.Gson;
-import it.almaviva.cgsse.drupal.taxonomy.bean.TaxonomyAziendaResponseAttributes;
-import it.almaviva.cgsse.drupal.taxonomy.bean.TaxonomyAziendaResponseBean;
+import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaResponseAttributes;
+import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaResponseBean;
 import org.junit.Assert;
 import org.junit.Test;
 

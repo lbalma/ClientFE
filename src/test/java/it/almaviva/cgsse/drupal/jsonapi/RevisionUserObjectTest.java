@@ -26,7 +26,7 @@ public class RevisionUserObjectTest {
 
         //CAST
         Gson g = new Gson();
-        RevisionUserObject obj = g.fromJson(jsonString,RevisionUserObject.class);
+        DataAndLinksObject obj = g.fromJson(jsonString,DataAndLinksObject.class);
 
         //PRINT
         System.out.println(jsonString);

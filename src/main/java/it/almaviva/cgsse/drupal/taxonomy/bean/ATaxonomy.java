@@ -6,7 +6,7 @@ package it.almaviva.cgsse.drupal.taxonomy.bean;
 public abstract class ATaxonomy {
 
     /**
-     * Metodo per convertire un oggetto in una string per una chiamata ad un servizio <b>insert</b> jsonapi
+     * Metodo per convertire un oggetto in una string json per una chiamata ad un servizio <b>insert</b> jsonapi
      * @return stringa
      */
     public String toJsonBodyInsert(){
@@ -20,7 +20,7 @@ public abstract class ATaxonomy {
 
 
     /**
-     * Metodo per convertire un oggetto in una string per una chiamata ad un servizio <b>update</b> jsonapi
+     * Metodo per convertire un oggetto in una string json per una chiamata ad un servizio <b>update</b> jsonapi
      * @return stringa
      */
     public String toJsonBodyUpdate(){
@@ -33,9 +33,22 @@ public abstract class ATaxonomy {
         return body.toString();
     };
 
-
+    /**
+     * Metodo per convertire un oggetto in una string json
+     * @return stringa
+     */
+    public String toJsonBody(){
+        StringBuilder body = new StringBuilder();
+        body.append("{\"data\":{");
+        body.append("\"type\": \"ntaxonomy_term--").append(getTipo()).append("\",");
+        body.append("\"id\":\"").append(getUUID()).append("\"");
+        body.append("}}");
+        return body.toString();
+    }
     protected abstract String attributeToJson();
     protected abstract String getTipo();
     public abstract String getUUID();
+    public abstract String getFk();
+
 
 }

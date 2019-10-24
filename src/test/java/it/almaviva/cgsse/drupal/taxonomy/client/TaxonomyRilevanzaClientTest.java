@@ -1,21 +1,21 @@
 package it.almaviva.cgsse.drupal.taxonomy.client;
 
-import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomyAziendaBOBean;
-import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaRequestBean;
+import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomyRilevanzaBOBean;
 import it.almaviva.cgsse.drupal.exception.NotValideRequestException;
+import it.almaviva.cgsse.drupal.taxonomy.bean.rilevanza.TaxonomyRilevanzaRequestBean;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class TaxonomyAziendaClientTest {
+public class TaxonomyRilevanzaClientTest {
 
     @Test
     public void test(){
         System.out.println("START - TEST");
-        String name = "Azienda di prova";
+        String name = "Rilevanza di prova";
         String fk = "23";
 
-        TaxonomyAziendaBOBean bo = null;
-        TaxonomyAziendaBOBean bo2 = null;
+        TaxonomyRilevanzaBOBean bo = null;
+        TaxonomyRilevanzaBOBean bo2 = null;
 
         try {
             testGetAll();
@@ -81,7 +81,7 @@ public class TaxonomyAziendaClientTest {
     public void testGetAll(){
         Boolean check = true;
         try{
-            TaxonomyAziendaClient client = new TaxonomyAziendaClient(new TaxonomyAziendaRequestBean());
+            TaxonomyRilevanzaClient client = new TaxonomyRilevanzaClient(new TaxonomyRilevanzaRequestBean());
             client.getAll();
         }catch (Exception e){
             System.out.println(e);
@@ -91,12 +91,12 @@ public class TaxonomyAziendaClientTest {
         System.out.println("-------------------->TEST - GetAll - Result: "+ check);
     }
 
-    public TaxonomyAziendaBOBean testGetByFk(String fk) throws Exception {
+    public TaxonomyRilevanzaBOBean testGetByFk(String fk) throws Exception {
         Boolean check = true;
 
-        TaxonomyAziendaRequestBean req = new TaxonomyAziendaRequestBean();
+        TaxonomyRilevanzaRequestBean req = new TaxonomyRilevanzaRequestBean();
         req.setFk(fk);
-        TaxonomyAziendaClient client = new TaxonomyAziendaClient(req);
+        TaxonomyRilevanzaClient client = new TaxonomyRilevanzaClient(req);
         client.getByFk();
 
         try{
@@ -111,11 +111,11 @@ public class TaxonomyAziendaClientTest {
         return client.getResBOList().get(0);
     }
 
-    public TaxonomyAziendaBOBean testGet(String uuid) throws Exception {
+    public TaxonomyRilevanzaBOBean testGet(String uuid) throws Exception {
         Boolean check = true;
-        TaxonomyAziendaRequestBean req = new TaxonomyAziendaRequestBean();
+        TaxonomyRilevanzaRequestBean req = new TaxonomyRilevanzaRequestBean();
         req.setUUID(uuid);
-        TaxonomyAziendaClient client = new TaxonomyAziendaClient(req);
+        TaxonomyRilevanzaClient client = new TaxonomyRilevanzaClient(req);
 
         try{
             client.get();
@@ -128,11 +128,11 @@ public class TaxonomyAziendaClientTest {
         return client.getResBO();
     }
 
-    public TaxonomyAziendaBOBean testPost(String name, String fk) throws Exception {
+    public TaxonomyRilevanzaBOBean testPost(String name, String fk) throws Exception {
         Boolean check = true;
-        TaxonomyAziendaRequestBean req =new TaxonomyAziendaRequestBean(name);
+        TaxonomyRilevanzaRequestBean req =new TaxonomyRilevanzaRequestBean(name);
         req.setFk(fk);
-        TaxonomyAziendaClient client = new TaxonomyAziendaClient(req);
+        TaxonomyRilevanzaClient client = new TaxonomyRilevanzaClient(req);
         try{
             client.post();
         }catch (Exception e){
@@ -147,7 +147,7 @@ public class TaxonomyAziendaClientTest {
 
     public void testPostNotValide() throws Exception {
         System.out.println("TEST - testPostNotValide");
-        TaxonomyAziendaClient client = new TaxonomyAziendaClient(new TaxonomyAziendaRequestBean(null));
+        TaxonomyRilevanzaClient client = new TaxonomyRilevanzaClient(new TaxonomyRilevanzaRequestBean(null));
         try{
             client.post();
         }catch(NotValideRequestException exc){
@@ -157,9 +157,9 @@ public class TaxonomyAziendaClientTest {
 
     public void testDel(String uuid) throws Exception {
         System.out.println("TEST - testDel");
-        TaxonomyAziendaRequestBean req = new TaxonomyAziendaRequestBean();
+        TaxonomyRilevanzaRequestBean req = new TaxonomyRilevanzaRequestBean();
         req.setUUID(uuid);
-        TaxonomyAziendaClient client = new TaxonomyAziendaClient(req);
+        TaxonomyRilevanzaClient client = new TaxonomyRilevanzaClient(req);
         try{
             client.del();
         }catch(NotValideRequestException exc){
@@ -168,15 +168,15 @@ public class TaxonomyAziendaClientTest {
 
     }
 
-    public TaxonomyAziendaBOBean testUpdate(String uuid, String newText, String fk) throws Exception {
+    public TaxonomyRilevanzaBOBean testUpdate(String uuid, String newText, String fk) throws Exception {
         Boolean check = true;
 
-        TaxonomyAziendaRequestBean req = new TaxonomyAziendaRequestBean();
+        TaxonomyRilevanzaRequestBean req = new TaxonomyRilevanzaRequestBean();
         req.setUUID(uuid);
         req.setName(newText);
         req.setFk(fk);
 
-        TaxonomyAziendaClient client = new TaxonomyAziendaClient(req);
+        TaxonomyRilevanzaClient client = new TaxonomyRilevanzaClient(req);
         try{
             client.patch();
         }catch(NotValideRequestException e){

@@ -1,4 +1,4 @@
-package it.almaviva.cgsse.drupal.taxonomy.bean;
+package it.almaviva.cgsse.drupal.taxonomy.bean.settore;
 
 import it.almaviva.cgsse.drupal.jsonapi.AttributesObject;
 
@@ -6,10 +6,10 @@ import it.almaviva.cgsse.drupal.jsonapi.AttributesObject;
  * Classe contenente gli attributi specifici per la tassonomia Azienda.
  * Questa classe è usata per castare l'attributo 'attributes' del jsonapi di risposta tornato dai servizzi esposti del FE
  */
-public class TaxonomyAziendaResponseAttributes extends AttributesObject {
+public class TaxonomySettoreResponseAttributes extends AttributesObject {
 
     private String name;
-    private String uuid; //TODO forse non serve
+    private String field_fk;
 
     public String getName() {
         return name;
@@ -19,11 +19,11 @@ public class TaxonomyAziendaResponseAttributes extends AttributesObject {
         this.name = name;
     }
 
-    public String getUuid() {
-        return uuid;
+    public String getField_fk() {
+        return field_fk;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void setField_fk(String field_fk) {
+        this.field_fk = field_fk;
     }
 }

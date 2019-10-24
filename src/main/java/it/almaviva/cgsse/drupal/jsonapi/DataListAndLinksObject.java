@@ -1,18 +1,20 @@
 package it.almaviva.cgsse.drupal.jsonapi;
 
-/**
- * Classe per conversione jsonapi to object, della struttura VidObject
- */
-public class VidObject {
+import java.util.List;
 
-    private DataObject data;
+/**
+ * Classe per conversione jsonapi to object, della struttura DataAndLinksObject
+ */
+public class DataListAndLinksObject {
+
+    private List<DataObject> data;
     private LinksObject links;
 
-    public DataObject getData() {
+    public List<DataObject> getData() {
         return data;
     }
 
-    public void setData(DataObject data) {
+    public void setData(List<DataObject> data) {
         this.data = data;
     }
 
@@ -24,10 +26,11 @@ public class VidObject {
         this.links = links;
     }
 
+
     @Override
     public String toString() {
-        StringBuilder s = new StringBuilder(VidObject.class.getName())
-                .append( "{" )
+        StringBuilder s = new StringBuilder(DataListAndLinksObject.class.getName())
+                .append("{" )
                 .append("data=" ).append(data )
                 .append(", links=" ).append(links )
                 .append('}');

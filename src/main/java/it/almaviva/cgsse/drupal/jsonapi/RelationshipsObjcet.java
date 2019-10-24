@@ -5,23 +5,23 @@ package it.almaviva.cgsse.drupal.jsonapi;
  */
 public class RelationshipsObjcet {
 
-    private VidObject vid;
-    private RevisionUserObject revision_user;
+    private DataAndLinksObject vid;
+    private DataAndLinksObject revision_user;
     private ParentObject parent;
 
-    public VidObject getVid() {
+    public DataAndLinksObject getVid() {
         return vid;
     }
 
-    public void setVid(VidObject vid) {
+    public void setVid(DataAndLinksObject vid) {
         this.vid = vid;
     }
 
-    public RevisionUserObject getRevision_user() {
+    public DataAndLinksObject getRevision_user() {
         return revision_user;
     }
 
-    public void setRevision_user(RevisionUserObject revision_user) {
+    public void setRevision_user(DataAndLinksObject revision_user) {
         this.revision_user = revision_user;
     }
 
