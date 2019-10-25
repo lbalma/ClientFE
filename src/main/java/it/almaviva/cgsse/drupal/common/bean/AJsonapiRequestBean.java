@@ -1,6 +1,6 @@
 package it.almaviva.cgsse.drupal.common.bean;
 
-public abstract class IJsonapiRequestBean {
+public abstract class AJsonapiRequestBean {
 
     /**
      * Metodo per convertire un oggetto in una string per una chiamata ad un servizio <b>insert</b> jsonapi
