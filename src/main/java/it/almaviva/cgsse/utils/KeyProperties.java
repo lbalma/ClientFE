@@ -11,4 +11,7 @@ public class KeyProperties {
     public static final String FE_ACCOUNT_PICE_A= "FE_ACCOUNT_PICE_A";
     public static final String FE_ACCOUNT_PICE_B= "FE_ACCOUNT_PICE_B";
 
+    public static final String LOGGER_RESPONSE="LOGGER_RESPONSE";
+    public static final String LOGGER_ADAPTER="LOGGER_ADAPTER";
+
 }

@@ -8,7 +8,9 @@ import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaResponseAtt
 import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaResponseBean;
 import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaResponseBeanList;
 import it.almaviva.cgsse.drupal.taxonomy.factory.TaxonomyFactory;
+import it.almaviva.cgsse.utils.PropertiesManager;
 
+import java.io.IOException;
 import java.net.http.HttpResponse;
 import java.util.List;
 
@@ -24,7 +26,7 @@ public class TaxonomyAziendaClient extends ATaxonomyClient<TaxonomyAziendaReques
     private TaxonomyAziendaBOBean resBO;
 
     public TaxonomyAziendaClient(TaxonomyAziendaRequestBean taxonomyRequest){
-        this.taxonomyRequest = taxonomyRequest;
+        this.request = taxonomyRequest;
     }
 
     @Override
@@ -33,8 +35,8 @@ public class TaxonomyAziendaClient extends ATaxonomyClient<TaxonomyAziendaReques
     }
 
     @Override
-    protected void setResult(HttpResponse<String> response, boolean isList) {
-        if(true){
+    protected void setResult(HttpResponse<String> response, boolean isList) throws IOException {
+        if(PropertiesManager.getInstance().getBooleanValue(PropertiesManager.LOGGER_RESPONSE)){
             System.out.println("RESPONSE BODY: "+response.body());
         }
 
@@ -43,10 +45,10 @@ public class TaxonomyAziendaClient extends ATaxonomyClient<TaxonomyAziendaReques
             this.resListJsonapiObject= TaxonomyFactory.createAziendaResponse_jsonapiFormatList(response.body());
             this.resBOList = TaxonomyFactory.createAziendaResponse_boFormatList(response.body());
 
-            if(true){
+            if(PropertiesManager.getInstance().getBooleanValue(PropertiesManager.LOGGER_ADAPTER)){
                 System.out.println("TaxonomyAziendaResponseBean: "+resListJsonapiObject.toString());
                 for(DataObject dataObjt: resListJsonapiObject.getData()){
-                    System.out.println("TaxonomyAziendaResponseBean-Attributes: "+((TaxonomyAziendaResponseAttributes) dataObjt.getAttributes()).toString());
+                    System.out.println("TaxonomyAziendaResponseBean-Attributes: "+ dataObjt.getAttributes().toString());
                 }
                 System.out.println("TaxonomyAziendaBOBean: "+resBOList.toString());
             }
@@ -54,9 +56,9 @@ public class TaxonomyAziendaClient extends ATaxonomyClient<TaxonomyAziendaReques
         }else{
             this.resJsonapiObject = TaxonomyFactory.createAziendaResponse_jsonapiFormat(response.body());
             this.resBO = TaxonomyFactory.createAziendaResponse_boFormat(response.body());
-            if(true) {
+            if(PropertiesManager.getInstance().getBooleanValue(PropertiesManager.LOGGER_ADAPTER)) {
                 System.out.println("TaxonomyAziendaResponseBean: " + resJsonapiObject.toString());
-                System.out.println("TaxonomyAziendaResponseBean-Attributes: " + ((TaxonomyAziendaResponseAttributes) resJsonapiObject.getdata().getAttributes()).toString());
+                System.out.println("TaxonomyAziendaResponseBean-Attributes: " + resJsonapiObject.getdata().getAttributes().toString());
                 System.out.println("TaxonomyAziendaBOBean: " + resBO.toString());
             }
         }
@@ -65,22 +67,22 @@ public class TaxonomyAziendaClient extends ATaxonomyClient<TaxonomyAziendaReques
 
     @Override
     protected void validateTaxonomyRequest() throws NotValideRequestException{
-        if(this.taxonomyRequest == null){
+        if(this.request == null){
             throw new NotValideRequestException(EXCEPTION_MESSAGE_REQUEST_NULL);
         }
 
-        if(this.taxonomyRequest.getName() == null || this.taxonomyRequest.getName().trim().isEmpty()){
+        if(this.request.getName() == null || this.request.getName().trim().isEmpty()){
             throw new NotValideRequestException(EXCEPTION_MESSAGE_INPUT_NAME_NULL_OR_EMPTY);
         }
     }
 
     @Override
     protected void validateUUIDRequest() throws NotValideRequestException {
-        if(this.taxonomyRequest == null){
+        if(this.request == null){
             throw new NotValideRequestException(EXCEPTION_MESSAGE_REQUEST_NULL);
         }
 
-        if(this.taxonomyRequest.getUUID() == null || this.taxonomyRequest.getUUID().trim().isEmpty()){
+        if(this.request.getUUID() == null || this.request.getUUID().trim().isEmpty()){
             throw new NotValideRequestException(EXCEPTION_MESSAGE_INPUT_UUID_NULL_OR_EMPTY);
         }
     }

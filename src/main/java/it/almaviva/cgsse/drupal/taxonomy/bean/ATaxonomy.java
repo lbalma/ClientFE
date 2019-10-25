@@ -1,9 +1,11 @@
 package it.almaviva.cgsse.drupal.taxonomy.bean;
 
+import it.almaviva.cgsse.drupal.common.bean.IJsonapiRequestBean;
+
 /**
  * Classe asratta contenente i metodi generici per una semplice comunicazione con FE
  */
-public abstract class ATaxonomy {
+public abstract class ATaxonomy extends IJsonapiRequestBean {
 
     /**
      * Metodo per convertire un oggetto in una string json per una chiamata ad un servizio <b>insert</b> jsonapi
@@ -45,6 +47,18 @@ public abstract class ATaxonomy {
         body.append("}}");
         return body.toString();
     }
+
+    @Override
+    public  String getTheUUID(){
+        return getUUID();
+    }
+
+    @Override
+    public  String getTheFk(){
+        return getFk();
+    }
+
+
     protected abstract String attributeToJson();
     protected abstract String getTipo();
     public abstract String getUUID();

@@ -3,7 +3,7 @@ package it.almaviva.cgsse.utils;
 import java.io.IOException;
 import java.util.Properties;
 
-public class PropertiesManager extends KeyProperties{
+public class PropertiesManager extends KeyProperties {
 
 
     private static String fileName = "prop.properties";
@@ -18,13 +18,17 @@ public class PropertiesManager extends KeyProperties{
     }
 
     public static PropertiesManager getInstance() throws IOException {
-        if(istance == null){
+        if (istance == null) {
             istance = new PropertiesManager();
         }
         return istance;
     }
 
-    public String getValue(String key){
-       return prop.getProperty(key);
+    public String getValue(String key) {
+        return prop.getProperty(key);
+    }
+
+    public Boolean getBooleanValue(String key) {
+        return Boolean.valueOf(getValue(key));
     }
 }
