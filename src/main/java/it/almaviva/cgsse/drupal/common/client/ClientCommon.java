@@ -1,6 +1,6 @@
 package it.almaviva.cgsse.drupal.common.client;
 
-import it.almaviva.cgsse.drupal.common.bean.IJsonapiRequestBean;
+import it.almaviva.cgsse.drupal.common.bean.AJsonapiRequestBean;
 import it.almaviva.cgsse.drupal.common.utils.ClientCostant;
 import it.almaviva.cgsse.drupal.exception.NotValideRequestException;
 import it.almaviva.cgsse.utils.AES;
@@ -13,7 +13,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.Base64;
 
-public abstract class ClientCommon<X extends IJsonapiRequestBean>  extends ClientCostant{
+public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends ClientCostant{
 
     protected int status;
     protected X request;
