@@ -79,7 +79,9 @@ public class TaxonomyRilevanzaClientTest {
     }
 
     public void testGetAll(){
+        System.out.println("-------------------->TEST - testGetAll");
         Boolean check = true;
+
         try{
             TaxonomyRilevanzaClient client = new TaxonomyRilevanzaClient(new TaxonomyRilevanzaRequestBean());
             client.getAll();
@@ -87,11 +89,13 @@ public class TaxonomyRilevanzaClientTest {
             System.out.println(e);
             check = false;
         }
+
         Assert.assertTrue(check);
         System.out.println("-------------------->TEST - GetAll - Result: "+ check);
     }
 
     public TaxonomyRilevanzaBOBean testGetByFk(String fk) throws Exception {
+        System.out.println("-------------------->TEST - testGetByFk");
         Boolean check = true;
 
         TaxonomyRilevanzaRequestBean req = new TaxonomyRilevanzaRequestBean();
@@ -112,9 +116,11 @@ public class TaxonomyRilevanzaClientTest {
     }
 
     public TaxonomyRilevanzaBOBean testGet(String uuid) throws Exception {
+        System.out.println("-------------------->TEST - testGet");
         Boolean check = true;
+
         TaxonomyRilevanzaRequestBean req = new TaxonomyRilevanzaRequestBean();
-        req.setUUID(uuid);
+        req.setUuid(uuid);
         TaxonomyRilevanzaClient client = new TaxonomyRilevanzaClient(req);
 
         try{
@@ -123,56 +129,58 @@ public class TaxonomyRilevanzaClientTest {
             System.out.println(e);
             check = false;
         }
+
         Assert.assertTrue(check);
         System.out.println("-------------------->TEST - Get - Result: "+ check);
         return client.getResBO();
     }
 
     public TaxonomyRilevanzaBOBean testPost(String name, String fk) throws Exception {
+        System.out.println("-------------------->TEST - testPost");
         Boolean check = true;
+
         TaxonomyRilevanzaRequestBean req =new TaxonomyRilevanzaRequestBean(name);
         req.setFk(fk);
         TaxonomyRilevanzaClient client = new TaxonomyRilevanzaClient(req);
+
         try{
             client.post();
         }catch (Exception e){
             System.out.println(e);
             check = false;
         }
+
         Assert.assertTrue(check);
         System.out.println("-------------------->TEST - Post - Result: "+ check);
-
         return client.getResBO();
     }
 
-    public void testPostNotValide() throws Exception {
-        System.out.println("TEST - testPostNotValide");
-        TaxonomyRilevanzaClient client = new TaxonomyRilevanzaClient(new TaxonomyRilevanzaRequestBean(null));
-        try{
-            client.post();
-        }catch(NotValideRequestException exc){
-            System.out.println("Eccezione gestita");
-        }
-    }
 
     public void testDel(String uuid) throws Exception {
-        System.out.println("TEST - testDel");
-        TaxonomyRilevanzaRequestBean req = new TaxonomyRilevanzaRequestBean();
-        req.setUUID(uuid);
-        TaxonomyRilevanzaClient client = new TaxonomyRilevanzaClient(req);
-        try{
-            client.del();
-        }catch(NotValideRequestException exc){
-            System.out.println("Eccezione gestita");
-        }
-
-    }
-
-    public TaxonomyRilevanzaBOBean testUpdate(String uuid, String newText, String fk) throws Exception {
+        System.out.println("-------------------->TEST - testDel");
         Boolean check = true;
 
         TaxonomyRilevanzaRequestBean req = new TaxonomyRilevanzaRequestBean();
-        req.setUUID(uuid);
+        req.setUuid(uuid);
+        TaxonomyRilevanzaClient client = new TaxonomyRilevanzaClient(req);
+
+        try{
+            client.del();
+        }catch(NotValideRequestException exc){
+            System.out.println(exc);
+            check = false;
+        }
+
+        Assert.assertTrue(check);
+        System.out.println("-------------------->TEST - testDel - Result: "+ check);
+    }
+
+    public TaxonomyRilevanzaBOBean testUpdate(String uuid, String newText, String fk) throws Exception {
+        System.out.println("-------------------->TEST - testUpdate");
+        Boolean check = true;
+
+        TaxonomyRilevanzaRequestBean req = new TaxonomyRilevanzaRequestBean();
+        req.setUuid(uuid);
         req.setName(newText);
         req.setFk(fk);
 
@@ -186,9 +194,7 @@ public class TaxonomyRilevanzaClientTest {
 
         Assert.assertTrue(check);
         System.out.println("-------------------->TEST - testUpdate - Result: "+ check);
-
         return client.getResBO();
-
     }
 
 

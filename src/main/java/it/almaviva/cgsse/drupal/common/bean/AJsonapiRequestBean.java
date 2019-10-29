@@ -14,8 +14,11 @@ public abstract class AJsonapiRequestBean {
      */
     public abstract String toJsonBodyUpdate();
 
-    public abstract String getTheUUID();
-    public abstract String getTheFk();
+    public abstract String toJsonBodyInject();
 
+    public abstract String toJsonBodyTypeId();
+
+    public abstract String getTheUuid();
+    public abstract String getTheFk();
 
 }

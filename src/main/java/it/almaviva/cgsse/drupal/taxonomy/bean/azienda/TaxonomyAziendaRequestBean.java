@@ -39,12 +39,8 @@ public class TaxonomyAziendaRequestBean extends ATaxonomy {
         return TAXONOMY_AZIENDA;
     }
 
-    public void setUUID(String uuid) {
-        this.uuid = uuid;
-    }
-
     @Override
-    public String getUUID() {
+    public String getUuid() {
         return uuid;
     }
 

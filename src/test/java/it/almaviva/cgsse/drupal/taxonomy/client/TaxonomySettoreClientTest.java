@@ -112,9 +112,11 @@ public class TaxonomySettoreClientTest {
     }
 
     public TaxonomySettoreBOBean testGet(String uuid) throws Exception {
+        System.out.println("-------------------->TEST - testGet");
         Boolean check = true;
+
         TaxonomySettoreRequestBean req = new TaxonomySettoreRequestBean();
-        req.setUUID(uuid);
+        req.setUuid(uuid);
         TaxonomySettoreClient client = new TaxonomySettoreClient(req);
 
         try{
@@ -123,56 +125,58 @@ public class TaxonomySettoreClientTest {
             System.out.println(e);
             check = false;
         }
+
         Assert.assertTrue(check);
         System.out.println("-------------------->TEST - Get - Result: "+ check);
         return client.getResBO();
     }
 
     public TaxonomySettoreBOBean testPost(String name, String fk) throws Exception {
+        System.out.println("-------------------->TEST - testPost");
         Boolean check = true;
+
         TaxonomySettoreRequestBean req =new TaxonomySettoreRequestBean(name);
         req.setFk(fk);
         TaxonomySettoreClient client = new TaxonomySettoreClient(req);
+
         try{
             client.post();
         }catch (Exception e){
             System.out.println(e);
             check = false;
         }
+
         Assert.assertTrue(check);
         System.out.println("-------------------->TEST - Post - Result: "+ check);
 
         return client.getResBO();
     }
 
-    public void testPostNotValide() throws Exception {
-        System.out.println("TEST - testPostNotValide");
-        TaxonomySettoreClient client = new TaxonomySettoreClient(new TaxonomySettoreRequestBean(null));
-        try{
-            client.post();
-        }catch(NotValideRequestException exc){
-            System.out.println("Eccezione gestita");
-        }
-    }
 
     public void testDel(String uuid) throws Exception {
-        System.out.println("TEST - testDel");
-        TaxonomySettoreRequestBean req = new TaxonomySettoreRequestBean();
-        req.setUUID(uuid);
-        TaxonomySettoreClient client = new TaxonomySettoreClient(req);
-        try{
-            client.del();
-        }catch(NotValideRequestException exc){
-            System.out.println("Eccezione gestita");
-        }
-
-    }
-
-    public TaxonomySettoreBOBean testUpdate(String uuid, String newText, String fk) throws Exception {
+        System.out.println("-------------------->TEST - testPost");
         Boolean check = true;
 
         TaxonomySettoreRequestBean req = new TaxonomySettoreRequestBean();
-        req.setUUID(uuid);
+        req.setUuid(uuid);
+        TaxonomySettoreClient client = new TaxonomySettoreClient(req);
+        try{
+            client.del();
+        }catch(NotValideRequestException e){
+            System.out.println(e);
+            check = false;
+        }
+
+        Assert.assertTrue(check);
+        System.out.println("-------------------->TEST - testDel - Result: "+ check);
+    }
+
+    public TaxonomySettoreBOBean testUpdate(String uuid, String newText, String fk) throws Exception {
+        System.out.println("-------------------->TEST - testUpdate");
+        Boolean check = true;
+
+        TaxonomySettoreRequestBean req = new TaxonomySettoreRequestBean();
+        req.setUuid(uuid);
         req.setName(newText);
         req.setFk(fk);
 

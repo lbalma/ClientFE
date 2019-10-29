@@ -82,7 +82,7 @@ public class TaxonomyAziendaClient extends ATaxonomyClient<TaxonomyAziendaReques
             throw new NotValideRequestException(EXCEPTION_MESSAGE_REQUEST_NULL);
         }
 
-        if(this.request.getUUID() == null || this.request.getUUID().trim().isEmpty()){
+        if(this.request.getUuid() == null || this.request.getUuid().trim().isEmpty()){
             throw new NotValideRequestException(EXCEPTION_MESSAGE_INPUT_UUID_NULL_OR_EMPTY);
         }
     }

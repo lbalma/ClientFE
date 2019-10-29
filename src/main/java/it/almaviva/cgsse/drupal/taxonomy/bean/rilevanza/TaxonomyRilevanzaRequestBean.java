@@ -1,7 +1,7 @@
 package it.almaviva.cgsse.drupal.taxonomy.bean.rilevanza;
 import it.almaviva.cgsse.drupal.taxonomy.bean.ATaxonomy;
 
-import static it.almaviva.cgsse.drupal.taxonomy.Costants.TAXONOMY_AZIENDA;
+import static it.almaviva.cgsse.drupal.taxonomy.Costants.TAXONOMY_RILEVANZA;
 
 /**
  * Classe per effettuare richieste hai servizzi esposti del FE per la tassonomia Azienda
@@ -37,15 +37,15 @@ public class TaxonomyRilevanzaRequestBean extends ATaxonomy {
 
     @Override
     protected String getTipo() {
-        return TAXONOMY_AZIENDA;
+        return TAXONOMY_RILEVANZA;
     }
 
-    public void setUUID(String uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 
     @Override
-    public String getUUID() {
+    public String getUuid() {
         return uuid;
     }
 

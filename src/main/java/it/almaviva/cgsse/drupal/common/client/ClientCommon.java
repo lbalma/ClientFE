@@ -36,7 +36,7 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
         HttpRequest request =  createGetHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         //CHECK
-        checkHTTPResponceCod(response);
+        checkHTTPResponseCode(response);
         //RESULT
         setTheResult(response, true);
 
@@ -52,7 +52,7 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
         HttpRequest request = createGetHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         //CHECK
-        checkHTTPResponceCod(response);
+        checkHTTPResponseCode(response);
         //RESULT
         setTheResult(response, false);
 
@@ -68,7 +68,7 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
         HttpRequest request = createGetByFkHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         //CHECK
-        checkHTTPResponceCod(response);
+        checkHTTPResponseCode(response);
         //RESULT
         setTheResult(response, true);
 
@@ -82,12 +82,12 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
      */
     public void post() throws Exception{
         //VALIDATE
-        theValidateTaxonomyRequest();
+        theValidateRequest();
         //INIT
         HttpRequest request = createPostHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         //CHECK
-        checkHTTPResponceCod(response);
+        checkHTTPResponseCode(response);
         //RESULT
         setTheResult(response, false);
 
@@ -106,7 +106,7 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
         HttpRequest request = createDelHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         //CHECK
-        checkHTTPResponceCod(response);
+        checkHTTPResponseCode(response);
         //RESULT
         return true;
     }
@@ -123,7 +123,7 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
         HttpRequest request = createPatchHttpRequest();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         //CHECK
-        checkHTTPResponceCod(response);
+        checkHTTPResponseCode(response);
         //RESULT
         setTheResult(response, false);
     }
@@ -157,16 +157,7 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
         builder.setHeader(HEADER_CONTENT_TYPE, HEADER_DRUPAL_JSONAPI);
     }
 
-    /**
-     * Metodo per aggiungere il tipi contunuto a accettati nell header per a comunicazione con le jsonapi di drupal
-     *
-     * @param builder
-     */
-    protected void setFileHeader(HttpRequest.Builder builder){
-        builder.setHeader(HEADER_ACCEPT, HEADER_DRUPAL_JSONAPI);
-        builder.setHeader(HEADER_CONTENT_TYPE, HEADER_DRUPAL_JSONAPI_CONTENT_TYPE_BINARY);
-        builder.setHeader(HEADER_CONTENT_DISPOSITION, "file,filename=\"name.pdf\"");//TODO file name to variable
-    }
+
 
 
     /**
@@ -202,9 +193,9 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
         builder.uri(URI.create(url));
     }
 
-    protected void checkHTTPResponceCod(HttpResponse<String> response) throws Exception{
+    protected void checkHTTPResponseCode(HttpResponse<String> response) throws Exception{
         if(PropertiesManager.getInstance().getBooleanValue(PropertiesManager.LOGGER_RESPONSE)){
-            System.out.println("checkError:"+ response.statusCode());
+            System.out.println("Response Code:"+ response.statusCode());
         }
         setStatus(response.statusCode());
         if(response.statusCode() <200 || response.statusCode() >= 300){
@@ -218,7 +209,7 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
      *
      * @return
      */
-    private String getService() throws IOException {
+    protected String getService() throws IOException {
         String FE_PROTOCOL = PropertiesManager.getInstance().getValue(PropertiesManager.FE_PROTOCOL);
         String FE_IP = PropertiesManager.getInstance().getValue(PropertiesManager.FE_IP);
         String FE_PORT = PropertiesManager.getInstance().getValue(PropertiesManager.FE_PORT);
@@ -242,7 +233,7 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
      */
     protected HttpRequest createGetHttpRequest() throws IOException {
         HttpRequest.Builder builder = HttpRequest.newBuilder().GET();
-        setServiceUri(builder, request.getTheUUID());
+        setServiceUri(builder, request.getTheUuid());
         setStandardHeader(builder);
         return  builder.build();
     }
@@ -264,23 +255,13 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
      */
     protected HttpRequest createPostHttpRequest() throws IOException {
         HttpRequest.Builder builder = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(request.toJsonBodyInsert()));
-        setServiceUri(builder, request.getTheUUID());
+        setServiceUri(builder, request.getTheUuid());
         setStandardHeader(builder);
         setAuth(builder);
         return builder.build();
     }
 
-    /**
-     * Metodo per la creazione di una richiesta upload file http POST
-     * @return
-     */
-    protected HttpRequest createPostFileHttpRequest(String endpoint) throws IOException {
-        HttpRequest.Builder builder = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(request.toJsonBodyInsert()));
-        setServiceUri(builder, endpoint);
-        setFileHeader(builder);
-        setAuth(builder);
-        return builder.build();
-    }
+
 
     /**
      * Metodo per la creazione di una richiesta http DELETE
@@ -288,7 +269,7 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
      */
     protected HttpRequest createDelHttpRequest() throws IOException {
         HttpRequest.Builder builder = HttpRequest.newBuilder().DELETE();
-        setServiceUri(builder, request.getTheUUID());
+        setServiceUri(builder, request.getTheUuid());
         setStandardHeader(builder);
         setAuth(builder);
         return builder.build();
@@ -301,7 +282,7 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
      */
     protected HttpRequest createPatchHttpRequest() throws IOException {
         HttpRequest.Builder builder = HttpRequest.newBuilder().POST(HttpRequest.BodyPublishers.ofString(request.toJsonBodyUpdate()));
-        setServiceUri(builder, request.getTheUUID());
+        setServiceUri(builder, request.getTheUuid());
         setStandardHeader(builder);
         builder.setHeader(HEADER_METHOD_OVER,HEADER_PATCH);
         setAuth(builder);
@@ -318,7 +299,7 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
     
     protected abstract void theValidateUUIDRequest() throws NotValideRequestException;
     protected abstract void setTheResult(HttpResponse<String> response, boolean b) throws IOException;
-    protected abstract void theValidateTaxonomyRequest() throws NotValideRequestException;
+    protected abstract void theValidateRequest() throws NotValideRequestException;
     /**
      * Endpoit del servizio
      *

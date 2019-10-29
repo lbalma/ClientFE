@@ -28,7 +28,7 @@ public abstract class ATaxonomyClient<R extends ATaxonomy> extends ClientCommon<
     }
 
     @Override
-    protected  void theValidateTaxonomyRequest() throws NotValideRequestException {
+    protected  void theValidateRequest() throws NotValideRequestException {
         validateTaxonomyRequest();
     }
 
