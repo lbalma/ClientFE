@@ -5,16 +5,18 @@ import it.almaviva.cgsse.drupal.content.bean.file.FileWorkableBean;
 import it.almaviva.cgsse.drupal.content.bean.intervento.ContentInterventoRequestBean;
 import it.almaviva.cgsse.drupal.content.bean.intervento.InterventoWorkableBean;
 import it.almaviva.cgsse.drupal.exception.NotValideRequestException;
+import it.almaviva.cgsse.utils.Tools;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.File;
 import java.nio.file.Files;
+import java.text.ParseException;
 
 public class ContentInterventoClientTest {
 
     @Test
-    public void test(){
+    public void test() throws ParseException {
         System.out.println("START - TEST");
         String newUuid = "";
         File allegato = new File("/home/luca/Scaricati/Scioperi.pdf");
@@ -91,7 +93,7 @@ public class ContentInterventoClientTest {
         ContentInterventoRequestBean req = new ContentInterventoRequestBean();
         req.setIntervento(workableBean.getIntervento());
         req.setPosizione(workableBean.getPosizione());
-        req.setDataIntervento(workableBean.getDataIntervento());
+        req.setDataIntervento(Tools.drupalStringDateToDate(workableBean.getDataIntervento()));
         req.setDescrizione(workableBean.getDescrizione());
         req.setFk(workableBean.getFk());
         req.setTitle(workableBean.getTitle());
@@ -182,7 +184,7 @@ public class ContentInterventoClientTest {
         ContentInterventoRequestBean req = new ContentInterventoRequestBean();
         req.setIntervento("Intervento");
         req.setPosizione("12");
-        req.setDataIntervento("2019-10-01");
+        req.setDataIntervento(Tools.drupalStringDateToDate("2019-10-01"));
         req.setDescrizione("Desc");
         req.setFk("23");
         req.setTitle("Titolo");
@@ -241,7 +243,7 @@ public class ContentInterventoClientTest {
         ContentInterventoRequestBean req = new ContentInterventoRequestBean();
         req.setIntervento(workableBean.getIntervento());
         req.setPosizione(workableBean.getPosizione());
-        req.setDataIntervento(workableBean.getDataIntervento());
+        req.setDataIntervento(Tools.drupalStringDateToDate(workableBean.getDataIntervento()));
         req.setDescrizione(workableBean.getDescrizione());
         req.setFk(workableBean.getFk());
         req.setTitle(workableBean.getTitle());

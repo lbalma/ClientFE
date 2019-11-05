@@ -7,6 +7,7 @@ import it.almaviva.cgsse.drupal.content.bean.sciopero.ScioperoWorkableBean;
 import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaRequestBean;
 import it.almaviva.cgsse.drupal.taxonomy.bean.rilevanza.TaxonomyRilevanzaRequestBean;
 import it.almaviva.cgsse.drupal.taxonomy.bean.settore.TaxonomySettoreRequestBean;
+import it.almaviva.cgsse.utils.Tools;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -166,8 +167,8 @@ public class ContentScioperoClientTest {
         req.setPosizione("12");
         req.setTitle("Titolo Sciopero");
         req.setControparte("Cotnro parte");
-        req.setInizio("2019-10-01");
-        req.setFine("2019-10-01");
+        req.setInizio(Tools.drupalStringDateToDate("2019-10-01"));
+        req.setFine(Tools.drupalStringDateToDate("2019-10-01"));
         req.setDifferito(false);
         req.setRevocato(false);
         req.setFk("65");
@@ -194,8 +195,8 @@ public class ContentScioperoClientTest {
         req.setPosizione("12");
         req.setTitle("Titolo Sciopero");
         req.setControparte("Cotnro parte");
-        req.setInizio("2019-10-01");
-        req.setFine("2019-10-01");
+        req.setInizio(Tools.drupalStringDateToDate("2019-10-01"));
+        req.setFine(Tools.drupalStringDateToDate("2019-10-01"));
         req.setDifferito(false);
         req.setRevocato(false);
         req.setFk("65");
@@ -256,8 +257,8 @@ public class ContentScioperoClientTest {
         req.setTitle(workableBean.getTitle());
         req.setControparte(workableBean.getControparte());
         req.setPosizione(workableBean.getPosizione());
-        req.setFine(workableBean.getFine());
-        req.setInizio(workableBean.getInizio());
+        req.setFine(Tools.drupalStringDateToDate(workableBean.getFine()));
+        req.setInizio(Tools.drupalStringDateToDate(workableBean.getInizio()));
         req.setUuid(workableBean.getUuid());
         req.setRevocato(workableBean.getRevocato());
         req.setDifferito(workableBean.getDifferito());

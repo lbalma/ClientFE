@@ -25,8 +25,8 @@ public class ScioperoLogicsTest {
         insert.setPosizione("12");
         insert.setTitle("Titolo Sciopero");
         insert.setControparte("Cotnro parte");
-        insert.setInizio("2019-10-01");
-        insert.setFine("2019-10-01");
+        insert.setInizio(Tools.drupalStringDateToDate("2019-10-01"));
+        insert.setFine(Tools.drupalStringDateToDate("2019-10-01"));
         insert.setDifferito(false);
         insert.setRevocato(false);
 
@@ -36,7 +36,7 @@ public class ScioperoLogicsTest {
         intervento.setIntervento("Logic Intrevento");
         intervento.setPosizione("POS");
         intervento.setTitle("Logic Title");
-        intervento.setDataIntervento("2019-10-01");
+        intervento.setDataIntervento(Tools.drupalStringDateToDate("2019-10-01"));
         intervento.setDescrizione("From logic");
         intervento.setFk("98");
         GenericFile allegato = new GenericFile();
@@ -66,14 +66,14 @@ public class ScioperoLogicsTest {
         Assert.assertTrue(insert.getPosizione().equals(resList.get(0).getPosizione()));
         Assert.assertTrue(insert.getTitle().equals(resList.get(0).getTitle()));
         Assert.assertTrue(insert.getControparte().equals(resList.get(0).getControparte()));
-        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getInizio()).equals(resList.get(0).getInizio()));
-        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getFine()).equals(resList.get(0).getFine()));
+        Assert.assertTrue(insert.getInizio().equals(resList.get(0).getInizio()));
+        Assert.assertTrue(insert.getFine().equals(resList.get(0).getFine()));
         Assert.assertTrue(insert.getDifferito().equals(resList.get(0).getDifferito()));
         Assert.assertTrue(insert.getRevocato().equals(resList.get(0).getRevocato()));
         Assert.assertTrue(insert.getInterventi().get(0).getIntervento().equals(resList.get(0).getInterventi().get(0).getIntervento()));
         Assert.assertTrue(insert.getInterventi().get(0).getPosizione().equals(resList.get(0).getInterventi().get(0).getPosizione()));
         Assert.assertTrue(insert.getInterventi().get(0).getTitle().equals(resList.get(0).getInterventi().get(0).getTitle()));
-        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getInterventi().get(0).getDataIntervento()).equals(resList.get(0).getInterventi().get(0).getDataIntervento()));
+        Assert.assertTrue(insert.getInterventi().get(0).getDataIntervento().equals(resList.get(0).getInterventi().get(0).getDataIntervento()));
         Assert.assertTrue(insert.getInterventi().get(0).getDescrizione().equals(resList.get(0).getInterventi().get(0).getDescrizione()));
         Assert.assertTrue(insert.getInterventi().get(0).getFk().equals(resList.get(0).getInterventi().get(0).getFk()));
 
@@ -82,8 +82,8 @@ public class ScioperoLogicsTest {
         insert.setPosizione("12-EDIT");
         insert.setTitle("Titolo Sciopero-EDIT");
         insert.setControparte("Cotnro parte-EDIT");
-        insert.setInizio("2019-10-02");
-        insert.setFine("2019-10-02");
+        insert.setInizio(Tools.drupalStringDateToDate("2019-10-02"));
+        insert.setFine(Tools.drupalStringDateToDate("2019-10-02"));
         insert.setDifferito(true);
         insert.setRevocato(true);
         interventi = new LinkedList<>();
@@ -111,14 +111,14 @@ public class ScioperoLogicsTest {
         Assert.assertTrue(insert.getPosizione().equals(resList.get(0).getPosizione()));
         Assert.assertTrue(insert.getTitle().equals(resList.get(0).getTitle()));
         Assert.assertTrue(insert.getControparte().equals(resList.get(0).getControparte()));
-        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getInizio()).equals(resList.get(0).getInizio()));
-        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getFine()).equals(resList.get(0).getFine()));
+        Assert.assertTrue(insert.getInizio().equals(resList.get(0).getInizio()));
+        Assert.assertTrue(insert.getFine().equals(resList.get(0).getFine()));
         Assert.assertTrue(insert.getDifferito().equals(resList.get(0).getDifferito()));
         Assert.assertTrue(insert.getRevocato().equals(resList.get(0).getRevocato()));
         Assert.assertTrue(insert.getInterventi().get(0).getIntervento().equals(resList.get(0).getInterventi().get(0).getIntervento()));
         Assert.assertTrue(insert.getInterventi().get(0).getPosizione().equals(resList.get(0).getInterventi().get(0).getPosizione()));
         Assert.assertTrue(insert.getInterventi().get(0).getTitle().equals(resList.get(0).getInterventi().get(0).getTitle()));
-        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getInterventi().get(0).getDataIntervento()).equals(resList.get(0).getInterventi().get(0).getDataIntervento()));
+        Assert.assertTrue(insert.getInterventi().get(0).getDataIntervento().equals(resList.get(0).getInterventi().get(0).getDataIntervento()));
         Assert.assertTrue(insert.getInterventi().get(0).getDescrizione().equals(resList.get(0).getInterventi().get(0).getDescrizione()));
         Assert.assertTrue(insert.getInterventi().get(0).getFk().equals(resList.get(0).getInterventi().get(0).getFk()));
 
@@ -143,8 +143,8 @@ public class ScioperoLogicsTest {
         Assert.assertTrue(insert.getPosizione().equals(resList.get(0).getPosizione()));
         Assert.assertTrue(insert.getTitle().equals(resList.get(0).getTitle()));
         Assert.assertTrue(insert.getControparte().equals(resList.get(0).getControparte()));
-        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getInizio()).equals(resList.get(0).getInizio()));
-        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getFine()).equals(resList.get(0).getFine()));
+        Assert.assertTrue(insert.getInizio().equals(resList.get(0).getInizio()));
+        Assert.assertTrue(insert.getFine().equals(resList.get(0).getFine()));
         Assert.assertTrue(insert.getDifferito().equals(resList.get(0).getDifferito()));
         Assert.assertTrue(insert.getRevocato().equals(resList.get(0).getRevocato()));
 
@@ -153,8 +153,8 @@ public class ScioperoLogicsTest {
         insert.setPosizione("12-EDIT2");
         insert.setTitle("Titolo Sciopero-EDIT2");
         insert.setControparte("Cotnro parte-EDIT2");
-        insert.setInizio("2019-10-03");
-        insert.setFine("2019-10-03");
+        insert.setInizio(Tools.drupalStringDateToDate("2019-10-03"));
+        insert.setFine(Tools.drupalStringDateToDate("2019-10-03"));
         insert.setDifferito(true);
         insert.setRevocato(false);
         intervento.setIntervento("Logic Intrevento - EDIT2");
@@ -174,8 +174,8 @@ public class ScioperoLogicsTest {
         Assert.assertTrue(insert.getPosizione().equals(resList.get(0).getPosizione()));
         Assert.assertTrue(insert.getTitle().equals(resList.get(0).getTitle()));
         Assert.assertTrue(insert.getControparte().equals(resList.get(0).getControparte()));
-        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getInizio()).equals(resList.get(0).getInizio()));
-        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getFine()).equals(resList.get(0).getFine()));
+        Assert.assertTrue(insert.getInizio().equals(resList.get(0).getInizio()));
+        Assert.assertTrue(insert.getFine().equals(resList.get(0).getFine()));
         Assert.assertTrue(insert.getDifferito().equals(resList.get(0).getDifferito()));
         Assert.assertTrue(insert.getRevocato().equals(resList.get(0).getRevocato()));
 

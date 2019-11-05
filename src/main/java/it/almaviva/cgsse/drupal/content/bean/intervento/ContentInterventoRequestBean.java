@@ -3,6 +3,9 @@ package it.almaviva.cgsse.drupal.content.bean.intervento;
 import it.almaviva.cgsse.drupal.content.bean.AContent;
 import it.almaviva.cgsse.drupal.content.bean.GenericFile;
 import it.almaviva.cgsse.drupal.content.bean.IRelationship;
+import it.almaviva.cgsse.utils.Tools;
+
+import java.util.Date;
 
 import static it.almaviva.cgsse.drupal.content.utils.Costants.CONTENT_INTERVENTO;
 
@@ -12,7 +15,7 @@ public class ContentInterventoRequestBean extends AContent implements IRelations
      private String intervento;
      private String posizione;
      private String title;
-     private String dataIntervento;
+     private Date dataIntervento;
      private String descrizione;
      private String fk;
 
@@ -59,11 +62,11 @@ public class ContentInterventoRequestBean extends AContent implements IRelations
         this.posizione = posizione;
     }
 
-    public String getDataIntervento() {
+    public Date getDataIntervento() {
         return dataIntervento;
     }
 
-    public void setDataIntervento(String dataIntervento) {
+    public void setDataIntervento(Date dataIntervento) {
         this.dataIntervento = dataIntervento;
     }
 
@@ -95,7 +98,7 @@ public class ContentInterventoRequestBean extends AContent implements IRelations
     protected String attributeToJson() {
         StringBuilder sb = new StringBuilder();
         sb.append("\"title\":\"").append(getTitle()).append("\",");
-        sb.append("\"field_data_intervento\":\"").append(getDataIntervento()).append("\",");
+        sb.append("\"field_data_intervento\":\"").append(Tools.dateToDrupalStringDate(getDataIntervento())).append("\",");
         sb.append("\"field_descrizione\":\"").append(getDescrizione()).append("\",");
         sb.append("\"field_posizione\":\"").append(getPosizione()).append("\",");
         sb.append("\"field_fk\":\"").append(getFk()).append("\",");

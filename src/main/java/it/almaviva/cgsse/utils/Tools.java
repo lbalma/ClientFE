@@ -12,7 +12,7 @@ public class Tools {
         if(date != null){
             return drupalDateFormat.format(date);
         }else{
-            throw new NullPointerException();
+            return "";
         }
     }
 

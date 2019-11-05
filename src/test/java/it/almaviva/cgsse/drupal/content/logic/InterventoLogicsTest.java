@@ -22,7 +22,7 @@ public class InterventoLogicsTest {
         insert.setIntervento("Logic Intrevento");
         insert.setPosizione("POS");
         insert.setTitle("Logic Title");
-        insert.setDataIntervento("2019-10-01");
+        insert.setDataIntervento(Tools.drupalStringDateToDate("2019-10-01"));
         insert.setDescrizione("From logic");
         insert.setFk("98");
         GenericFile allegato = new GenericFile();
@@ -50,7 +50,7 @@ public class InterventoLogicsTest {
         Assert.assertTrue(insert.getIntervento().equals(resList.get(0).getIntervento()));
         Assert.assertTrue(insert.getPosizione().equals(resList.get(0).getPosizione()));
         Assert.assertTrue(insert.getTitle().equals(resList.get(0).getTitle()));
-        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getDataIntervento()).equals(resList.get(0).getDataIntervento()));
+        Assert.assertTrue(insert.getDataIntervento().equals(resList.get(0).getDataIntervento()));
         Assert.assertTrue(insert.getDescrizione().equals(resList.get(0).getDescrizione()));
         Assert.assertTrue(insert.getFk().equals(resList.get(0).getFk()));
 
@@ -76,7 +76,7 @@ public class InterventoLogicsTest {
         Assert.assertTrue(insert.getIntervento().equals(resList.get(0).getIntervento()));
         Assert.assertTrue(insert.getPosizione().equals(resList.get(0).getPosizione()));
         Assert.assertTrue(insert.getTitle().equals(resList.get(0).getTitle()));
-        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getDataIntervento()).equals(resList.get(0).getDataIntervento()));
+        Assert.assertTrue(insert.getDataIntervento().equals(resList.get(0).getDataIntervento()));
         Assert.assertTrue(insert.getDescrizione().equals(resList.get(0).getDescrizione()));
         Assert.assertTrue(insert.getFk().equals(resList.get(0).getFk()));
 
@@ -100,7 +100,7 @@ public class InterventoLogicsTest {
         Assert.assertTrue(insert.getIntervento().equals(resList.get(0).getIntervento()));
         Assert.assertTrue(insert.getPosizione().equals(resList.get(0).getPosizione()));
         Assert.assertTrue(insert.getTitle().equals(resList.get(0).getTitle()));
-        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getDataIntervento()).equals(resList.get(0).getDataIntervento()));
+        Assert.assertTrue(insert.getDataIntervento().equals(resList.get(0).getDataIntervento()));
         Assert.assertTrue(insert.getDescrizione().equals(resList.get(0).getDescrizione()));
         Assert.assertTrue(insert.getFk().equals(resList.get(0).getFk()));
 
@@ -120,7 +120,7 @@ public class InterventoLogicsTest {
         Assert.assertTrue(insert.getIntervento().equals(resList.get(0).getIntervento()));
         Assert.assertTrue(insert.getPosizione().equals(resList.get(0).getPosizione()));
         Assert.assertTrue(insert.getTitle().equals(resList.get(0).getTitle()));
-        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getDataIntervento()).equals(resList.get(0).getDataIntervento()));
+        Assert.assertTrue(insert.getDataIntervento().equals(resList.get(0).getDataIntervento()));
         Assert.assertTrue(insert.getDescrizione().equals(resList.get(0).getDescrizione()));
         Assert.assertTrue(insert.getFk().equals(resList.get(0).getFk()));
 

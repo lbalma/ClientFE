@@ -5,8 +5,10 @@ import it.almaviva.cgsse.drupal.content.bean.intervento.ContentInterventoRequest
 import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaRequestBean;
 import it.almaviva.cgsse.drupal.taxonomy.bean.rilevanza.TaxonomyRilevanzaRequestBean;
 import it.almaviva.cgsse.drupal.taxonomy.bean.settore.TaxonomySettoreRequestBean;
+import it.almaviva.cgsse.utils.Tools;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static it.almaviva.cgsse.drupal.content.utils.Costants.CONTENT_SCIOPERO;
@@ -16,8 +18,8 @@ public class ContentScioperoRequestBean extends AContent {
     private String title;
     private String controparte;
     private String posizione;
-    private String fine;
-    private String inizio;
+    private Date fine;
+    private Date inizio;
     private String uuid;
     private Boolean revocato;
     private Boolean differito;
@@ -69,19 +71,19 @@ public class ContentScioperoRequestBean extends AContent {
         this.revocato = revocato;
     }
 
-    public String getFine() {
+    public Date getFine() {
         return fine;
     }
 
-    public void setFine(String fine) {
+    public void setFine(Date fine) {
         this.fine = fine;
     }
 
-    public String getInizio() {
+    public Date getInizio() {
         return inizio;
     }
 
-    public void setInizio(String inizio) {
+    public void setInizio(Date inizio) {
         this.inizio = inizio;
     }
 
@@ -140,8 +142,8 @@ public class ContentScioperoRequestBean extends AContent {
         sb.append("\"field_differito\":").append(getDifferito()).append(",");
         sb.append("\"field_posizione\":\"").append(getPosizione()).append("\",");
         sb.append("\"field_revocato\":").append(getRevocato()).append(",");
-        sb.append("\"field_fine\":\"").append(getFine()).append("\",");
-        sb.append("\"field_inizio\":\"").append(getInizio()).append("\",");
+        sb.append("\"field_fine\":\"").append(Tools.dateToDrupalStringDate(getFine())).append("\",");
+        sb.append("\"field_inizio\":\"").append(Tools.dateToDrupalStringDate(getInizio())).append("\",");
         sb.append("\"field_fk\":\"").append(getFk()).append("\"");
 
         return sb.toString();
