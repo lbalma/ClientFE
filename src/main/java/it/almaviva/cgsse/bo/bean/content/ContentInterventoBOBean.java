@@ -2,13 +2,15 @@ package it.almaviva.cgsse.bo.bean.content;
 
 import it.almaviva.cgsse.bo.bean.BOBean;
 
+import java.util.Date;
+
 
 public class ContentInterventoBOBean extends BOBean {
 
     private String intervento;
     private String posizione;
-    private String dataIntervento;
-    private String desctizione;
+    private Date dataIntervento;
+    private String descrizione;
     private String fk;
     private String allegato;
     private String title;
@@ -29,20 +31,20 @@ public class ContentInterventoBOBean extends BOBean {
         this.posizione = posizione;
     }
 
-    public String getDataIntervento() {
+    public Date getDataIntervento() {
         return dataIntervento;
     }
 
-    public void setDataIntervento(String dataIntervento) {
+    public void setDataIntervento(Date dataIntervento) {
         this.dataIntervento = dataIntervento;
     }
 
-    public String getDesctizione() {
-        return desctizione;
+    public String getDescrizione() {
+        return descrizione;
     }
 
-    public void setDesctizione(String desctizione) {
-        this.desctizione = desctizione;
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
     }
 
     public String getFk() {
@@ -75,7 +77,7 @@ public class ContentInterventoBOBean extends BOBean {
                 "intervento='" + intervento + '\'' +
                 ", posizione='" + posizione + '\'' +
                 ", dataIntervento='" + dataIntervento + '\'' +
-                ", desctizione='" + desctizione + '\'' +
+                ", descrizione='" + descrizione + '\'' +
                 ", fk='" + fk + '\'' +
                 ", allegato='" + allegato + '\'' +
                 ", title='" + title + '\'' +

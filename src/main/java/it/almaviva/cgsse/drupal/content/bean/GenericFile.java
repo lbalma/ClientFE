@@ -1,8 +1,6 @@
 package it.almaviva.cgsse.drupal.content.bean;
 
-import java.io.File;
-
-import static it.almaviva.cgsse.drupal.content.Costants.CONTENT_FILE;
+import static it.almaviva.cgsse.drupal.content.utils.Costants.CONTENT_FILE;
 
 public class GenericFile extends AFile {
 

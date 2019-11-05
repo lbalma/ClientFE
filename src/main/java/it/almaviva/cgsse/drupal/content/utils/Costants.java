@@ -1,4 +1,4 @@
-package it.almaviva.cgsse.drupal.content;
+package it.almaviva.cgsse.drupal.content.utils;
 
 public class Costants {
     public static String CONTENT_SCIOPERO = "sciopero";

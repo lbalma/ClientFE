@@ -120,6 +120,7 @@ public class ContentFactory {
 
             workableBean.setInterventi(interventi);
         }
+        //TODO mancno le tassonomie
 
         return workableBean;
     }

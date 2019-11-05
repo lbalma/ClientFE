@@ -3,6 +3,8 @@ package it.almaviva.cgsse.drupal.content.logic;
 import it.almaviva.cgsse.bo.bean.content.ContentInterventoBOBean;
 import it.almaviva.cgsse.drupal.content.bean.GenericFile;
 import it.almaviva.cgsse.drupal.content.bean.intervento.ContentInterventoRequestBean;
+import it.almaviva.cgsse.utils.Tools;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.File;
@@ -45,7 +47,12 @@ public class InterventoLogicsTest {
         System.out.println("=== RUN GetByFk: fk: "+ insert.getFk()+ " ===");
         resList =  logics.execGetByFK(insert.getFk());
         System.out.println(resList);
-
+        Assert.assertTrue(insert.getIntervento().equals(resList.get(0).getIntervento()));
+        Assert.assertTrue(insert.getPosizione().equals(resList.get(0).getPosizione()));
+        Assert.assertTrue(insert.getTitle().equals(resList.get(0).getTitle()));
+        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getDataIntervento()).equals(resList.get(0).getDataIntervento()));
+        Assert.assertTrue(insert.getDescrizione().equals(resList.get(0).getDescrizione()));
+        Assert.assertTrue(insert.getFk().equals(resList.get(0).getFk()));
 
         //EDIT - Complte
         System.out.println("=== RUN edit - Complete ===");
@@ -62,6 +69,16 @@ public class InterventoLogicsTest {
         status =  logics.execEdit(insert);
         System.out.println(status);
 
+        //GET BY FK -EDITED
+        System.out.println("=== RUN GetByFk -EDITED: fk: "+ insert.getFk()+ " ===");
+        resList =  logics.execGetByFK(insert.getFk());
+        System.out.println(resList);
+        Assert.assertTrue(insert.getIntervento().equals(resList.get(0).getIntervento()));
+        Assert.assertTrue(insert.getPosizione().equals(resList.get(0).getPosizione()));
+        Assert.assertTrue(insert.getTitle().equals(resList.get(0).getTitle()));
+        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getDataIntervento()).equals(resList.get(0).getDataIntervento()));
+        Assert.assertTrue(insert.getDescrizione().equals(resList.get(0).getDescrizione()));
+        Assert.assertTrue(insert.getFk().equals(resList.get(0).getFk()));
 
         //DEL
         System.out.println("=== RUN Del ===");
@@ -76,6 +93,16 @@ public class InterventoLogicsTest {
         status = logics.execInsert(insert);
         System.out.println(status);
 
+        //GET BY FK -Insert No file
+        System.out.println("=== RUN GetByFk -INSERT no file: fk: "+ insert.getFk()+ " ===");
+        resList =  logics.execGetByFK(insert.getFk());
+        System.out.println(resList);
+        Assert.assertTrue(insert.getIntervento().equals(resList.get(0).getIntervento()));
+        Assert.assertTrue(insert.getPosizione().equals(resList.get(0).getPosizione()));
+        Assert.assertTrue(insert.getTitle().equals(resList.get(0).getTitle()));
+        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getDataIntervento()).equals(resList.get(0).getDataIntervento()));
+        Assert.assertTrue(insert.getDescrizione().equals(resList.get(0).getDescrizione()));
+        Assert.assertTrue(insert.getFk().equals(resList.get(0).getFk()));
 
         //EDIT - NO FIle
         System.out.println("=== RUN Edit - No File ===");
@@ -85,6 +112,17 @@ public class InterventoLogicsTest {
 
         status =  logics.execEdit(insert);
         System.out.println(status);
+
+        //GET BY FK -EDITED No file
+        System.out.println("=== RUN GetByFk -EDITED no file: fk: "+ insert.getFk()+ " ===");
+        resList =  logics.execGetByFK(insert.getFk());
+        System.out.println(resList);
+        Assert.assertTrue(insert.getIntervento().equals(resList.get(0).getIntervento()));
+        Assert.assertTrue(insert.getPosizione().equals(resList.get(0).getPosizione()));
+        Assert.assertTrue(insert.getTitle().equals(resList.get(0).getTitle()));
+        Assert.assertTrue(Tools.drupalStringDateToDate(insert.getDataIntervento()).equals(resList.get(0).getDataIntervento()));
+        Assert.assertTrue(insert.getDescrizione().equals(resList.get(0).getDescrizione()));
+        Assert.assertTrue(insert.getFk().equals(resList.get(0).getFk()));
 
 
         //DEL

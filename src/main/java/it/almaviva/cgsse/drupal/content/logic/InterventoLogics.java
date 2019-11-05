@@ -27,7 +27,7 @@ public class InterventoLogics {
         InterventoClient client = new InterventoClient(new ContentInterventoRequestBean());
         try {
             client.getAll();
-            return BOFactory.convertWorkableToBO(client.getResList());
+            return BOFactory.convertWorkableToBOInterventi(client.getResList());
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -47,7 +47,7 @@ public class InterventoLogics {
             req.setFk(fk);
             InterventoClient client = new InterventoClient(req);
             client.getByFk();
-            return BOFactory.convertWorkableToBO(client.getResList());
+            return BOFactory.convertWorkableToBOInterventi(client.getResList());
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -84,6 +84,8 @@ public class InterventoLogics {
         }
         try {
             client.post();
+            InterventoWorkableBean res = client.getRes();
+            req.setUuid(res.getUuid());
             return true;
         }catch(Exception e){
             e.printStackTrace();

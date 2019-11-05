@@ -4,7 +4,6 @@ import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomyAziendaBOBean;
 import it.almaviva.cgsse.drupal.exception.NotValideRequestException;
 import it.almaviva.cgsse.drupal.jsonapi.DataObject;
 import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaRequestBean;
-import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaResponseAttributes;
 import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaResponseBean;
 import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaResponseBeanList;
 import it.almaviva.cgsse.drupal.taxonomy.factory.TaxonomyFactory;
@@ -14,7 +13,7 @@ import java.io.IOException;
 import java.net.http.HttpResponse;
 import java.util.List;
 
-import static it.almaviva.cgsse.drupal.taxonomy.Costants.*;
+import static it.almaviva.cgsse.drupal.taxonomy.utils.Costants.*;
 import static it.almaviva.cgsse.drupal.exception.NotValideRequestException.*;
 
 public class TaxonomyAziendaClient extends ATaxonomyClient<TaxonomyAziendaRequestBean> {

@@ -4,7 +4,6 @@ import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomyRilevanzaBOBean;
 import it.almaviva.cgsse.drupal.exception.NotValideRequestException;
 import it.almaviva.cgsse.drupal.jsonapi.DataObject;
 import it.almaviva.cgsse.drupal.taxonomy.bean.rilevanza.TaxonomyRilevanzaRequestBean;
-import it.almaviva.cgsse.drupal.taxonomy.bean.rilevanza.TaxonomyRilevanzaResponseAttributes;
 import it.almaviva.cgsse.drupal.taxonomy.bean.rilevanza.TaxonomyRilevanzaResponseBean;
 import it.almaviva.cgsse.drupal.taxonomy.bean.rilevanza.TaxonomyRilevanzaResponseBeanList;
 import it.almaviva.cgsse.drupal.taxonomy.factory.TaxonomyFactory;
@@ -15,7 +14,7 @@ import java.net.http.HttpResponse;
 import java.util.List;
 
 import static it.almaviva.cgsse.drupal.exception.NotValideRequestException.*;
-import static it.almaviva.cgsse.drupal.taxonomy.Costants.TAXONOMY_RILEVANZA;
+import static it.almaviva.cgsse.drupal.taxonomy.utils.Costants.TAXONOMY_RILEVANZA;
 
 public class TaxonomyRilevanzaClient extends ATaxonomyClient<TaxonomyRilevanzaRequestBean> {
 

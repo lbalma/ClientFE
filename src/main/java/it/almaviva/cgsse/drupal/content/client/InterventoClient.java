@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.http.HttpResponse;
 import java.util.List;
 
-import static it.almaviva.cgsse.drupal.content.Costants.CONTENT_INTERVENTO;
+import static it.almaviva.cgsse.drupal.content.utils.Costants.CONTENT_INTERVENTO;
 import static it.almaviva.cgsse.drupal.exception.NotValideRequestException.EXCEPTION_MESSAGE_INPUT_UUID_NULL_OR_EMPTY;
 import static it.almaviva.cgsse.drupal.exception.NotValideRequestException.EXCEPTION_MESSAGE_REQUEST_NULL;
 

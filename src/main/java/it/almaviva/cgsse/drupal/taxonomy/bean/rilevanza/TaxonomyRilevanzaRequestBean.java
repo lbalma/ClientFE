@@ -1,7 +1,7 @@
 package it.almaviva.cgsse.drupal.taxonomy.bean.rilevanza;
 import it.almaviva.cgsse.drupal.taxonomy.bean.ATaxonomy;
 
-import static it.almaviva.cgsse.drupal.taxonomy.Costants.TAXONOMY_RILEVANZA;
+import static it.almaviva.cgsse.drupal.taxonomy.utils.Costants.TAXONOMY_RILEVANZA;
 
 /**
  * Classe per effettuare richieste hai servizzi esposti del FE per la tassonomia Azienda

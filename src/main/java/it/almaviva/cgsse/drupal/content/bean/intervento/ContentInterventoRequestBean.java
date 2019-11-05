@@ -4,7 +4,7 @@ import it.almaviva.cgsse.drupal.content.bean.AContent;
 import it.almaviva.cgsse.drupal.content.bean.GenericFile;
 import it.almaviva.cgsse.drupal.content.bean.IRelationship;
 
-import static it.almaviva.cgsse.drupal.content.Costants.CONTENT_INTERVENTO;
+import static it.almaviva.cgsse.drupal.content.utils.Costants.CONTENT_INTERVENTO;
 
 public class ContentInterventoRequestBean extends AContent implements IRelationship {
 

@@ -9,7 +9,7 @@ import it.almaviva.cgsse.drupal.taxonomy.bean.settore.TaxonomySettoreRequestBean
 import java.util.ArrayList;
 import java.util.List;
 
-import static it.almaviva.cgsse.drupal.content.Costants.CONTENT_SCIOPERO;
+import static it.almaviva.cgsse.drupal.content.utils.Costants.CONTENT_SCIOPERO;
 
 public class ContentScioperoRequestBean extends AContent {
 

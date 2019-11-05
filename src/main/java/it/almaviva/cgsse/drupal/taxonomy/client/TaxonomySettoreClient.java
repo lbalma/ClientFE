@@ -4,7 +4,6 @@ import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomySettoreBOBean;
 import it.almaviva.cgsse.drupal.exception.NotValideRequestException;
 import it.almaviva.cgsse.drupal.jsonapi.DataObject;
 import it.almaviva.cgsse.drupal.taxonomy.bean.settore.TaxonomySettoreRequestBean;
-import it.almaviva.cgsse.drupal.taxonomy.bean.settore.TaxonomySettoreResponseAttributes;
 import it.almaviva.cgsse.drupal.taxonomy.bean.settore.TaxonomySettoreResponseBean;
 import it.almaviva.cgsse.drupal.taxonomy.bean.settore.TaxonomySettoreResponseBeanList;
 import it.almaviva.cgsse.drupal.taxonomy.factory.TaxonomyFactory;
@@ -15,7 +14,7 @@ import java.net.http.HttpResponse;
 import java.util.List;
 
 import static it.almaviva.cgsse.drupal.exception.NotValideRequestException.*;
-import static it.almaviva.cgsse.drupal.taxonomy.Costants.TAXONOMY_SETTORE;
+import static it.almaviva.cgsse.drupal.taxonomy.utils.Costants.TAXONOMY_SETTORE;
 
 public class TaxonomySettoreClient extends ATaxonomyClient<TaxonomySettoreRequestBean> {
 

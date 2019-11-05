@@ -1,7 +1,7 @@
 package it.almaviva.cgsse.drupal.taxonomy.bean.settore;
 import it.almaviva.cgsse.drupal.taxonomy.bean.ATaxonomy;
 
-import static it.almaviva.cgsse.drupal.taxonomy.Costants.TAXONOMY_SETTORE;
+import static it.almaviva.cgsse.drupal.taxonomy.utils.Costants.TAXONOMY_SETTORE;
 
 /**
  * Classe per effettuare richieste hai servizzi esposti del FE per la tassonomia Azienda
