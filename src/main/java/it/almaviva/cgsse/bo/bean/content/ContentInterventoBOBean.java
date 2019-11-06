@@ -32,11 +32,11 @@ public class ContentInterventoBOBean extends BOBean {
     }
 
     public Date getDataIntervento() {
-        return dataIntervento;
+        return (Date)dataIntervento.clone();
     }
 
     public void setDataIntervento(Date dataIntervento) {
-        this.dataIntervento = dataIntervento;
+        this.dataIntervento = dataIntervento != null ? new Date(dataIntervento.getTime()): null;
     }
 
     public String getDescrizione() {

@@ -11,6 +11,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends ClientCostant{
@@ -143,8 +145,8 @@ public abstract class ClientCommon<X extends AJsonapiRequestBean>  extends Clien
         String decryptedPaceB = AES.decrypt(FE_ACCOUNT_PICE_B);
 
 
-        String encoding = Base64.getEncoder().encodeToString((decryptedPaceA+":"+decryptedPaceB).getBytes());
-        return "Basic "+encoding;
+        String encoding = Base64.getEncoder().encodeToString((decryptedPaceA+":"+decryptedPaceB).getBytes(StandardCharsets.UTF_8));
+        return "Basic "+encoding; //TODO Costante
     }
 
     /**

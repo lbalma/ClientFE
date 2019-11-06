@@ -72,19 +72,18 @@ public class ContentScioperoRequestBean extends AContent {
     }
 
     public Date getFine() {
-        return fine;
+        return (Date)fine.clone();
     }
 
     public void setFine(Date fine) {
-        this.fine = fine;
+        this.fine = fine != null ? new Date(fine.getTime()): null;
     }
 
     public Date getInizio() {
-        return inizio;
-    }
+        return (Date)inizio.clone();    }
 
     public void setInizio(Date inizio) {
-        this.inizio = inizio;
+        this.inizio = inizio != null ? new Date(inizio.getTime()): null;
     }
 
     @Override

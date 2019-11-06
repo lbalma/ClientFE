@@ -24,11 +24,11 @@ public class GenericFile extends AFile {
     }
 
     public byte[] getFile() {
-        return file;
+        return file!= null ? file.clone(): null;
     }
 
     public void setFile(byte[] file) {
-        this.file = file;
+        this.file = file!= null ? file.clone(): null;
     }
 
     public String getName() {
