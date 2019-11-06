@@ -1,6 +1,5 @@
 package it.almaviva.cgsse.drupal.content.bean.file;
 
-import it.almaviva.cgsse.drupal.jsonapi.DataAndLinksObject;
 import it.almaviva.cgsse.drupal.jsonapi.RelationshipsForContentObjcet;
 
 /**

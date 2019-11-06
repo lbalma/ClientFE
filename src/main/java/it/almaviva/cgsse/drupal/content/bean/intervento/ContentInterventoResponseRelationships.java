@@ -1,7 +1,6 @@
 package it.almaviva.cgsse.drupal.content.bean.intervento;
 
 import it.almaviva.cgsse.drupal.jsonapi.DataAndLinksObject;
-import it.almaviva.cgsse.drupal.jsonapi.DataListAndLinksObject;
 import it.almaviva.cgsse.drupal.jsonapi.RelationshipsForContentObjcet;
 
 /**

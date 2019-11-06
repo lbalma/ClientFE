@@ -5,7 +5,6 @@ import it.almaviva.cgsse.drupal.common.client.ClientCommon;
 import it.almaviva.cgsse.drupal.content.bean.AContent;
 import it.almaviva.cgsse.drupal.content.bean.GenericFile;
 import it.almaviva.cgsse.drupal.exception.NotValideRequestException;
-import it.almaviva.cgsse.drupal.taxonomy.bean.ATaxonomy;
 import it.almaviva.cgsse.utils.PropertiesManager;
 
 import java.io.IOException;

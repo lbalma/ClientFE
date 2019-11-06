@@ -1,8 +1,8 @@
 package it.almaviva.cgsse.drupal.taxonomy.client;
 
 import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomyAziendaBOBean;
-import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaRequestBean;
 import it.almaviva.cgsse.drupal.exception.NotValideRequestException;
+import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaRequestBean;
 import org.junit.Assert;
 import org.junit.Test;
 

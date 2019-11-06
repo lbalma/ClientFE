@@ -1,6 +1,5 @@
 package it.almaviva.cgsse.drupal.content.logic;
 
-import it.almaviva.cgsse.bo.bean.content.ContentInterventoBOBean;
 import it.almaviva.cgsse.bo.bean.content.ContentScioperoBOBean;
 import it.almaviva.cgsse.drupal.content.bean.GenericFile;
 import it.almaviva.cgsse.drupal.content.bean.intervento.ContentInterventoRequestBean;

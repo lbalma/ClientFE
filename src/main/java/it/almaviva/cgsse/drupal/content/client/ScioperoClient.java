@@ -1,8 +1,10 @@
 package it.almaviva.cgsse.drupal.content.client;
 
-import it.almaviva.cgsse.drupal.content.bean.sciopero.*;
-import it.almaviva.cgsse.drupal.content.factory.ContentFactory;
+import it.almaviva.cgsse.drupal.content.bean.sciopero.ContentScioperoRequestBean;
+import it.almaviva.cgsse.drupal.content.bean.sciopero.ContentScioperoResponseBean;
+import it.almaviva.cgsse.drupal.content.bean.sciopero.ContentScioperoResponseBeanList;
 import it.almaviva.cgsse.drupal.content.bean.sciopero.ScioperoWorkableBean;
+import it.almaviva.cgsse.drupal.content.factory.ContentFactory;
 import it.almaviva.cgsse.drupal.exception.NotValideRequestException;
 import it.almaviva.cgsse.drupal.jsonapi.DataForContentObject;
 import it.almaviva.cgsse.utils.PropertiesManager;

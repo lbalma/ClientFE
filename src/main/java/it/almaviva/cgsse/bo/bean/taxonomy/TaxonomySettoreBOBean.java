@@ -35,7 +35,7 @@ public class TaxonomySettoreBOBean extends BOBean {
     //TODO
     @Override
     public String toString() {
-        return "TaxonomyAziendaBOBean{" +
+        return "TaxonomySettoreBOBean{" +
                 "name='" + name + '\'' +
                 ", fk='" + fk + '\'' +
                 ", uuid='" + uuid + '\'' +

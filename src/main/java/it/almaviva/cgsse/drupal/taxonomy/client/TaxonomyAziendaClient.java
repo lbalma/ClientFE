@@ -13,8 +13,8 @@ import java.io.IOException;
 import java.net.http.HttpResponse;
 import java.util.List;
 
-import static it.almaviva.cgsse.drupal.taxonomy.utils.Costants.*;
 import static it.almaviva.cgsse.drupal.exception.NotValideRequestException.*;
+import static it.almaviva.cgsse.drupal.taxonomy.utils.Costants.TAXONOMY_AZIENDA;
 
 public class TaxonomyAziendaClient extends ATaxonomyClient<TaxonomyAziendaRequestBean> {
 

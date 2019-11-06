@@ -4,8 +4,6 @@ import it.almaviva.cgsse.drupal.jsonapi.DataAndLinksObject;
 import it.almaviva.cgsse.drupal.jsonapi.DataListAndLinksObject;
 import it.almaviva.cgsse.drupal.jsonapi.RelationshipsForContentObjcet;
 
-import java.util.List;
-
 /**
  * Classe contenente gli attributi specifici per la tassonomia Azienda.
  * Questa classe è usata per castare l'attributo 'attributes' del jsonapi di risposta tornato dai servizzi esposti del FE

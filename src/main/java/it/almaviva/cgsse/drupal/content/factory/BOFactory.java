@@ -7,7 +7,6 @@ import it.almaviva.cgsse.drupal.content.bean.sciopero.ScioperoWorkableBean;
 import it.almaviva.cgsse.utils.Tools;
 
 import java.text.ParseException;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 

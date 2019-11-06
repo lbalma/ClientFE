@@ -1,13 +1,11 @@
 package it.almaviva.cgsse.drupal.taxonomy.client;
 
 import it.almaviva.cgsse.drupal.common.client.ClientCommon;
-import it.almaviva.cgsse.drupal.taxonomy.bean.ATaxonomy;
 import it.almaviva.cgsse.drupal.exception.NotValideRequestException;
+import it.almaviva.cgsse.drupal.taxonomy.bean.ATaxonomy;
 import it.almaviva.cgsse.utils.PropertiesManager;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 /**

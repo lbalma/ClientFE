@@ -4,13 +4,10 @@ import it.almaviva.cgsse.bo.bean.content.ContentScioperoBOBean;
 import it.almaviva.cgsse.drupal.content.bean.intervento.ContentInterventoRequestBean;
 import it.almaviva.cgsse.drupal.content.bean.intervento.InterventoWorkableBean;
 import it.almaviva.cgsse.drupal.content.bean.sciopero.ContentScioperoRequestBean;
+import it.almaviva.cgsse.drupal.content.bean.sciopero.ScioperoWorkableBean;
 import it.almaviva.cgsse.drupal.content.client.InterventoClient;
 import it.almaviva.cgsse.drupal.content.client.ScioperoClient;
-import it.almaviva.cgsse.drupal.content.bean.sciopero.ScioperoWorkableBean;
 import it.almaviva.cgsse.drupal.content.factory.BOFactory;
-import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaRequestBean;
-import it.almaviva.cgsse.drupal.taxonomy.client.TaxonomyAziendaClient;
-
 
 import java.util.LinkedList;
 import java.util.List;
