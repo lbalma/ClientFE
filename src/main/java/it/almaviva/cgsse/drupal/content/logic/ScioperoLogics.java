@@ -1,6 +1,9 @@
 package it.almaviva.cgsse.drupal.content.logic;
 
 import it.almaviva.cgsse.bo.bean.content.ContentScioperoBOBean;
+import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomyAziendaBOBean;
+import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomyRilevanzaBOBean;
+import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomySettoreBOBean;
 import it.almaviva.cgsse.drupal.content.bean.intervento.ContentInterventoRequestBean;
 import it.almaviva.cgsse.drupal.content.bean.intervento.InterventoWorkableBean;
 import it.almaviva.cgsse.drupal.content.bean.sciopero.ContentScioperoRequestBean;
@@ -8,6 +11,12 @@ import it.almaviva.cgsse.drupal.content.bean.sciopero.ScioperoWorkableBean;
 import it.almaviva.cgsse.drupal.content.client.InterventoClient;
 import it.almaviva.cgsse.drupal.content.client.ScioperoClient;
 import it.almaviva.cgsse.drupal.content.factory.BOFactory;
+import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaRequestBean;
+import it.almaviva.cgsse.drupal.taxonomy.bean.rilevanza.TaxonomyRilevanzaRequestBean;
+import it.almaviva.cgsse.drupal.taxonomy.bean.settore.TaxonomySettoreRequestBean;
+import it.almaviva.cgsse.drupal.taxonomy.client.TaxonomyAziendaClient;
+import it.almaviva.cgsse.drupal.taxonomy.client.TaxonomyRilevanzaClient;
+import it.almaviva.cgsse.drupal.taxonomy.client.TaxonomySettoreClient;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -78,6 +87,52 @@ public class ScioperoLogics {
         System.out.println("ScioperoLogics - execInsert: "+ req.toString());
         ScioperoClient client = new ScioperoClient(req);
 
+        if(req.getAzienda() != null && req.getAzienda().getFk() != null && !req.getAzienda().getFk().isEmpty()){
+            TaxonomyAziendaRequestBean reqAzienda = new TaxonomyAziendaRequestBean();
+            reqAzienda.setFk(req.getAzienda().getFk());
+            TaxonomyAziendaClient aziendaClient = new TaxonomyAziendaClient(reqAzienda);
+            try {
+                aziendaClient.getByFk();
+                List<TaxonomyAziendaBOBean>  aziende = aziendaClient.getResBOList();
+                if(aziende != null && !aziende.isEmpty()){
+                    req.getAzienda().setUuid(aziende.get(0).getUuid());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(req.getSettore() != null && req.getSettore().getFk() != null && !req.getSettore().getFk().isEmpty()){
+            TaxonomySettoreRequestBean reqSettore = new TaxonomySettoreRequestBean();
+            reqSettore.setFk(req.getSettore().getFk());
+            TaxonomySettoreClient settoreClient = new TaxonomySettoreClient(reqSettore);
+            try {
+                settoreClient.getByFk();
+                List<TaxonomySettoreBOBean>  settori = settoreClient.getResBOList();
+                if(settori != null && !settori.isEmpty()){
+                    req.getSettore().setUuid(settori.get(0).getUuid());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        if(req.getRilevanza() != null && req.getRilevanza().getFk() != null && !req.getRilevanza().getFk().isEmpty()){
+            TaxonomyRilevanzaRequestBean reRilevanza = new TaxonomyRilevanzaRequestBean();
+            reRilevanza.setFk(req.getRilevanza().getFk());
+            TaxonomyRilevanzaClient rilevanzaClient = new TaxonomyRilevanzaClient(reRilevanza);
+            try {
+                rilevanzaClient.getByFk();
+                List<TaxonomyRilevanzaBOBean>  rilevanze = rilevanzaClient.getResBOList();
+                if(rilevanze != null && !rilevanze.isEmpty()){
+                    req.getRilevanza().setUuid(rilevanze.get(0).getUuid());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
         //VERIFICO SE è presente l'intervento, se quest'ultimo è presente dovro caricarlo per primo in seguito carichero lo sciopero
         if(req.getInterventi() != null && !req.getInterventi().isEmpty())
         {
@@ -123,6 +178,52 @@ public class ScioperoLogics {
                 System.out.println("Contenuto trovato - execEdit");
 
                 req.setUuid(reqList.get(0).getUuid());
+                if(req.getAzienda() != null && req.getAzienda().getFk() != null && !req.getAzienda().getFk().isEmpty()){
+                    TaxonomyAziendaRequestBean reqAzienda = new TaxonomyAziendaRequestBean();
+                    reqAzienda.setFk(req.getAzienda().getFk());
+                    TaxonomyAziendaClient aziendaClient = new TaxonomyAziendaClient(reqAzienda);
+                    try {
+                        aziendaClient.getByFk();
+                        List<TaxonomyAziendaBOBean>  aziende = aziendaClient.getResBOList();
+                        if(aziende != null && !aziende.isEmpty()){
+                            req.getAzienda().setUuid(aziende.get(0).getUuid());
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                if(req.getSettore() != null && req.getSettore().getFk() != null && !req.getSettore().getFk().isEmpty()){
+                    TaxonomySettoreRequestBean reqSettore = new TaxonomySettoreRequestBean();
+                    reqSettore.setFk(req.getSettore().getFk());
+                    TaxonomySettoreClient settoreClient = new TaxonomySettoreClient(reqSettore);
+                    try {
+                        settoreClient.getByFk();
+                        List<TaxonomySettoreBOBean>  settori = settoreClient.getResBOList();
+                        if(settori != null && !settori.isEmpty()){
+                            req.getSettore().setUuid(settori.get(0).getUuid());
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                if(req.getRilevanza() != null && req.getRilevanza().getFk() != null && !req.getRilevanza().getFk().isEmpty()){
+                    TaxonomyRilevanzaRequestBean reRilevanza = new TaxonomyRilevanzaRequestBean();
+                    reRilevanza.setFk(req.getRilevanza().getFk());
+                    TaxonomyRilevanzaClient rilevanzaClient = new TaxonomyRilevanzaClient(reRilevanza);
+                    try {
+                        rilevanzaClient.getByFk();
+                        List<TaxonomyRilevanzaBOBean>  rilevanze = rilevanzaClient.getResBOList();
+                        if(rilevanze != null && !rilevanze.isEmpty()){
+                            req.getRilevanza().setUuid(rilevanze.get(0).getUuid());
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
                 client = new ScioperoClient(req);
 
                 if(req.getInterventi() != null && !req.getInterventi().isEmpty()){
@@ -136,6 +237,16 @@ public class ScioperoLogics {
                         e.printStackTrace();
                         return false;
                     }
+                }
+
+                if(req.getAzienda() != null && req.getAzienda().getUuid() != null && !req.getAzienda().getUuid().isEmpty()){
+                    client.patchUpdateContentRelationship("field_azienda",req.getAzienda());
+                }
+                if(req.getSettore() != null && req.getSettore().getUuid() != null && !req.getSettore().getUuid().isEmpty()){
+                    client.patchUpdateContentRelationship("field_settore",req.getSettore());
+                }
+                if(req.getRilevanza() != null && req.getRilevanza().getUuid() != null && !req.getRilevanza().getUuid().isEmpty()){
+                    client.patchUpdateContentRelationship("field_rilevanza",req.getRilevanza());
                 }
 
                 client.patch();
@@ -215,12 +326,29 @@ public class ScioperoLogics {
             }
             boBean.setInterventi(BOFactory.convertWorkableToBOInterventi(interventoWorkBeanL));
 
-            //TODO mancano
+            if(workable.getAzienda() != null &&  !workable.getAzienda().isEmpty() && !workable.getAzienda().equals("missing")){ //TODO COSTANTE
+                TaxonomyAziendaRequestBean req = new TaxonomyAziendaRequestBean();
+                req.setUuid(workable.getAzienda());
+                TaxonomyAziendaClient client = new TaxonomyAziendaClient(req);
+                client.get();
+                boBean.setAzienda(client.getResBO());
+            }
 
+            if(workable.getSettore() != null &&  !workable.getSettore().isEmpty() && !workable.getSettore().equals("missing")){ //TODO COSTANTE
+                TaxonomySettoreRequestBean req = new TaxonomySettoreRequestBean();
+                req.setUuid(workable.getSettore());
+                TaxonomySettoreClient client = new TaxonomySettoreClient(req);
+                client.get();
+                boBean.setSettore(client.getResBO());
+            }
 
-            //TODO Tassonomie
-
-            //TODO delibere
+            if(workable.getRilevanza() != null &&  !workable.getRilevanza().isEmpty() && !workable.getRilevanza().equals("missing")){ //TODO COSTANTE
+                TaxonomyRilevanzaRequestBean req = new TaxonomyRilevanzaRequestBean();
+                req.setUuid(workable.getRilevanza());
+                TaxonomyRilevanzaClient client = new TaxonomyRilevanzaClient(req);
+                client.get();
+                boBean.setRilevanza(client.getResBO());
+            }
 
             res.add(boBean);
         }

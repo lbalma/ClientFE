@@ -4,6 +4,9 @@ import it.almaviva.cgsse.bo.bean.content.ContentScioperoBOBean;
 import it.almaviva.cgsse.drupal.content.bean.GenericFile;
 import it.almaviva.cgsse.drupal.content.bean.intervento.ContentInterventoRequestBean;
 import it.almaviva.cgsse.drupal.content.bean.sciopero.ContentScioperoRequestBean;
+import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaRequestBean;
+import it.almaviva.cgsse.drupal.taxonomy.bean.rilevanza.TaxonomyRilevanzaRequestBean;
+import it.almaviva.cgsse.drupal.taxonomy.bean.settore.TaxonomySettoreRequestBean;
 import it.almaviva.cgsse.utils.Tools;
 import org.junit.Assert;
 import org.junit.Test;
@@ -20,14 +23,24 @@ public class ScioperoLogicsTest {
         ScioperoLogics logics = new ScioperoLogics();
 
         ContentScioperoRequestBean insert = new ContentScioperoRequestBean();
-        insert.setFk("4");
+        insert.setFk("44");
         insert.setPosizione("12");
-        insert.setTitle("Titolo Sciopero");
+        insert.setTitle("Titolo Sciopero H ");
         insert.setControparte("Cotnro parte");
         insert.setInizio(Tools.drupalStringDateToDate("2019-10-01"));
         insert.setFine(Tools.drupalStringDateToDate("2019-10-01"));
         insert.setDifferito(false);
         insert.setRevocato(false);
+
+        TaxonomyRilevanzaRequestBean rilvanza = new TaxonomyRilevanzaRequestBean();
+        rilvanza.setFk("1");
+        insert.setRilevanza(rilvanza);
+        TaxonomySettoreRequestBean settore = new TaxonomySettoreRequestBean();
+        settore.setFk("1");
+        insert.setSettore(settore);
+        TaxonomyAziendaRequestBean azienda = new TaxonomyAziendaRequestBean();
+        azienda.setFk("1");
+        insert.setAzienda(azienda);
 
         List<ContentInterventoRequestBean> interventi = new LinkedList<>();
         File f = new File("/home/luca/Scaricati/Scioperi.pdf");
@@ -76,10 +89,13 @@ public class ScioperoLogicsTest {
         Assert.assertTrue(insert.getInterventi().get(0).getDescrizione().equals(resList.get(0).getInterventi().get(0).getDescrizione()));
         Assert.assertTrue(insert.getInterventi().get(0).getFk().equals(resList.get(0).getInterventi().get(0).getFk()));
 
+        Assert.assertTrue(insert.getAzienda().getFk().equals(resList.get(0).getAzienda().getFk()));
+        Assert.assertTrue(insert.getSettore().getFk().equals(resList.get(0).getSettore().getFk()));
+        Assert.assertTrue(insert.getRilevanza().getFk().equals(resList.get(0).getRilevanza().getFk()));
 
         //EDIT - Complte
         insert.setPosizione("12-EDIT");
-        insert.setTitle("Titolo Sciopero-EDIT");
+        insert.setTitle("Titolo Sciopero H -EDIT");
         insert.setControparte("Cotnro parte-EDIT");
         insert.setInizio(Tools.drupalStringDateToDate("2019-10-02"));
         insert.setFine(Tools.drupalStringDateToDate("2019-10-02"));
@@ -97,6 +113,16 @@ public class ScioperoLogicsTest {
         intervento.setAllegato(allegato);
         interventi.add(intervento);
         insert.setInterventi(interventi);
+
+        rilvanza = new TaxonomyRilevanzaRequestBean();
+        rilvanza.setFk("6");
+        insert.setRilevanza(rilvanza);
+        settore = new TaxonomySettoreRequestBean();
+        settore.setFk("3");
+        insert.setSettore(settore);
+        azienda = new TaxonomyAziendaRequestBean();
+        azienda.setFk("4");
+        insert.setAzienda(azienda);
 
         System.out.println("=== RUN edit - Complete ===");
         status =  logics.execEdit(insert);
@@ -121,6 +147,10 @@ public class ScioperoLogicsTest {
         Assert.assertTrue(insert.getInterventi().get(0).getDescrizione().equals(resList.get(0).getInterventi().get(0).getDescrizione()));
         Assert.assertTrue(insert.getInterventi().get(0).getFk().equals(resList.get(0).getInterventi().get(0).getFk()));
 
+        Assert.assertTrue(insert.getAzienda().getFk().equals(resList.get(0).getAzienda().getFk()));
+        Assert.assertTrue(insert.getSettore().getFk().equals(resList.get(0).getSettore().getFk()));
+        Assert.assertTrue(insert.getRilevanza().getFk().equals(resList.get(0).getRilevanza().getFk()));
+
         //DEL
         System.out.println("=== RUN Del ===");
         status =  logics.execDeleteByFK(insert.getFk());
@@ -130,6 +160,15 @@ public class ScioperoLogicsTest {
         System.out.println("=== RUN Insert - No Interventi ===");
         insert.setUuid(null);
         insert.setInterventi(new LinkedList<>());
+        rilvanza = new TaxonomyRilevanzaRequestBean();
+        rilvanza.setFk("1");
+        insert.setRilevanza(rilvanza);
+        settore = new TaxonomySettoreRequestBean();
+        settore.setFk("1");
+        insert.setSettore(settore);
+        azienda = new TaxonomyAziendaRequestBean();
+        azienda.setFk("1");
+        insert.setAzienda(azienda);
         status = logics.execInsert(insert);
         System.out.println(status);
 
@@ -146,6 +185,9 @@ public class ScioperoLogicsTest {
         Assert.assertTrue(insert.getFine().equals(resList.get(0).getFine()));
         Assert.assertTrue(insert.getDifferito().equals(resList.get(0).getDifferito()));
         Assert.assertTrue(insert.getRevocato().equals(resList.get(0).getRevocato()));
+        Assert.assertTrue(insert.getAzienda().getFk().equals(resList.get(0).getAzienda().getFk()));
+        Assert.assertTrue(insert.getSettore().getFk().equals(resList.get(0).getSettore().getFk()));
+        Assert.assertTrue(insert.getRilevanza().getFk().equals(resList.get(0).getRilevanza().getFk()));
 
 
         //EDIT - No Interventi
@@ -159,6 +201,12 @@ public class ScioperoLogicsTest {
         intervento.setIntervento("Logic Intrevento - EDIT2");
         intervento.setPosizione("POS - EDIT2");
         intervento.setTitle("Logic Title - EDIT2");
+        settore = new TaxonomySettoreRequestBean();
+        settore.setFk("3");
+        insert.setSettore(settore);
+        azienda = new TaxonomyAziendaRequestBean();
+        azienda.setFk("4");
+        insert.setAzienda(azienda);
 
         System.out.println("=== RUN edit - No Interventi ===");
         status =  logics.execEdit(insert);
@@ -177,6 +225,9 @@ public class ScioperoLogicsTest {
         Assert.assertTrue(insert.getFine().equals(resList.get(0).getFine()));
         Assert.assertTrue(insert.getDifferito().equals(resList.get(0).getDifferito()));
         Assert.assertTrue(insert.getRevocato().equals(resList.get(0).getRevocato()));
+        Assert.assertTrue(insert.getAzienda().getFk().equals(resList.get(0).getAzienda().getFk()));
+        Assert.assertTrue(insert.getSettore().getFk().equals(resList.get(0).getSettore().getFk()));
+        Assert.assertTrue(insert.getRilevanza().getFk().equals(resList.get(0).getRilevanza().getFk()));
 
         //DEL
         System.out.println("=== RUN Del ===");

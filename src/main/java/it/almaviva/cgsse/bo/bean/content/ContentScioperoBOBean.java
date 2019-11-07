@@ -1,6 +1,9 @@
 package it.almaviva.cgsse.bo.bean.content;
 
 import it.almaviva.cgsse.bo.bean.BOBean;
+import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomyAziendaBOBean;
+import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomyRilevanzaBOBean;
+import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomySettoreBOBean;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -19,6 +22,10 @@ public class ContentScioperoBOBean extends BOBean {
     private Boolean differito;
 
     private List<ContentInterventoBOBean> interventi = new LinkedList<>();
+    private TaxonomyAziendaBOBean azienda;
+    private TaxonomyRilevanzaBOBean rilevanza;
+    private TaxonomySettoreBOBean settore;
+
 
     public String getTitle() {
         return title;
@@ -92,6 +99,30 @@ public class ContentScioperoBOBean extends BOBean {
         this.interventi = interventi;
     }
 
+    public TaxonomyAziendaBOBean getAzienda() {
+        return azienda;
+    }
+
+    public void setAzienda(TaxonomyAziendaBOBean azienda) {
+        this.azienda = azienda;
+    }
+
+    public TaxonomyRilevanzaBOBean getRilevanza() {
+        return rilevanza;
+    }
+
+    public void setRilevanza(TaxonomyRilevanzaBOBean rilevanza) {
+        this.rilevanza = rilevanza;
+    }
+
+    public TaxonomySettoreBOBean getSettore() {
+        return settore;
+    }
+
+    public void setSettore(TaxonomySettoreBOBean settore) {
+        this.settore = settore;
+    }
+
     @Override
     public String toString() {
         return "ContentScioperoBOBean{" +
@@ -104,6 +135,9 @@ public class ContentScioperoBOBean extends BOBean {
                 ", revocato=" + revocato +
                 ", differito=" + differito +
                 ", interventi=" + interventi +
+                ", azienda=" + azienda +
+                ", rilevanza=" + rilevanza +
+                ", settore=" + settore +
                 '}';
     }
 }
