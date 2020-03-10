@@ -1,13 +1,14 @@
 package it.almaviva.cgsse.drupal.taxonomy.logic;
 
 import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomyRilevanzaBOBean;
+import it.almaviva.cgsse.drupal.common.logic.TaxonomyLogic;
 import it.almaviva.cgsse.drupal.taxonomy.bean.rilevanza.TaxonomyRilevanzaRequestBean;
 import it.almaviva.cgsse.drupal.taxonomy.client.TaxonomyRilevanzaClient;
 
 import java.util.List;
 
 
-public class RilevanzaLogics {
+public class RilevanzaLogics extends TaxonomyLogic<TaxonomyRilevanzaRequestBean, TaxonomyRilevanzaBOBean>  {
 
 
 

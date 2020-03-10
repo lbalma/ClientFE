@@ -2,7 +2,7 @@ package it.almaviva.cgsse.bo.bean.taxonomy;
 
 import it.almaviva.cgsse.bo.bean.BOBean;
 
-public class TaxonomySettoreBOBean extends BOBean {
+    public class TaxonomySettoreBOBean extends BOBean {
 
     private String name;
     private String fk;

@@ -1,16 +1,20 @@
 package it.almaviva.cgsse.drupal.taxonomy.logic;
 
 import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomyAziendaBOBean;
+import it.almaviva.cgsse.drupal.common.logic.TaxonomyLogic;
 import it.almaviva.cgsse.drupal.taxonomy.bean.azienda.TaxonomyAziendaRequestBean;
 import it.almaviva.cgsse.drupal.taxonomy.client.TaxonomyAziendaClient;
 
 import java.util.List;
 
 
-public class AziendaLogics {
+public class AziendaLogics  extends TaxonomyLogic<TaxonomyAziendaRequestBean, TaxonomyAziendaBOBean> {
 
 
-
+    /**
+     *
+     * @return
+     */
     public List<TaxonomyAziendaBOBean> execGetAll() {
         System.out.println("AziendaLogics - execGetAll");
         TaxonomyAziendaClient client = new TaxonomyAziendaClient(new TaxonomyAziendaRequestBean());

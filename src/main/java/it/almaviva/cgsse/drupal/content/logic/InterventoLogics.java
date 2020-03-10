@@ -1,6 +1,7 @@
 package it.almaviva.cgsse.drupal.content.logic;
 
 import it.almaviva.cgsse.bo.bean.content.ContentInterventoBOBean;
+import it.almaviva.cgsse.drupal.common.logic.ContentLogic;
 import it.almaviva.cgsse.drupal.content.bean.GenericFile;
 import it.almaviva.cgsse.drupal.content.bean.file.FileWorkableBean;
 import it.almaviva.cgsse.drupal.content.bean.intervento.ContentInterventoRequestBean;
@@ -14,7 +15,7 @@ import java.util.List;
  * Logica per la gestione degli interventi
  *
  */
-public class InterventoLogics {
+public class InterventoLogics extends ContentLogic<ContentInterventoRequestBean, ContentInterventoBOBean>{
 
     /**
      * Torna tutti gli interventi contenuti dal FE, senza filtri

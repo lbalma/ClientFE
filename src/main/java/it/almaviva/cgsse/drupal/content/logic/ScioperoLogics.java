@@ -4,6 +4,7 @@ import it.almaviva.cgsse.bo.bean.content.ContentScioperoBOBean;
 import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomyAziendaBOBean;
 import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomyRilevanzaBOBean;
 import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomySettoreBOBean;
+import it.almaviva.cgsse.drupal.common.logic.ContentLogic;
 import it.almaviva.cgsse.drupal.content.bean.intervento.ContentInterventoRequestBean;
 import it.almaviva.cgsse.drupal.content.bean.intervento.InterventoWorkableBean;
 import it.almaviva.cgsse.drupal.content.bean.sciopero.ContentScioperoRequestBean;
@@ -26,7 +27,7 @@ import java.util.List;
  *
  * Se il contenuto delle entità cambia la logica dovrà avere un minimo di impatti se non nullo
  */
-public class ScioperoLogics {
+public class ScioperoLogics extends ContentLogic<ContentScioperoRequestBean, ContentScioperoBOBean> {
 
     /**
      * Metodo che torna tutti gli scioperi presenti nel FE

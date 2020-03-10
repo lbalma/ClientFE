@@ -1,13 +1,14 @@
 package it.almaviva.cgsse.drupal.taxonomy.logic;
 
 import it.almaviva.cgsse.bo.bean.taxonomy.TaxonomySettoreBOBean;
+import it.almaviva.cgsse.drupal.common.logic.TaxonomyLogic;
 import it.almaviva.cgsse.drupal.taxonomy.bean.settore.TaxonomySettoreRequestBean;
 import it.almaviva.cgsse.drupal.taxonomy.client.TaxonomySettoreClient;
 
 import java.util.List;
 
 
-public class SettoreLogics {
+public class SettoreLogics extends TaxonomyLogic<TaxonomySettoreRequestBean,TaxonomySettoreBOBean> {
 
 
 
